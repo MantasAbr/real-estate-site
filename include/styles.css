@@ -139,7 +139,7 @@ a.register {
 }
 a.goBack {
     text-align: center;
-    background-color: #D2DEE0;
+    background-color: #aa7370;
     border-style: solid;
     border-width: 1.5px;
     border-color: #222222;
@@ -163,7 +163,7 @@ h1.intro {
 div.intro {
     margin-top: 15%;
     text-align: center;
-    background-color: #D2DEE0;
+    background-color: #D2DEE0aa;
     border-style: solid;
     border-width: 1.5px;
     border-color: #222222;
@@ -174,7 +174,7 @@ div.postContainer {
     width: 80%;
     padding: 20px 20px;
     margin: 0 10px;
-    background-color: #D2DEE0;
+    background-color: #D2DEE0aa;
     border-style: solid;
     border-width: 1.5px;
     border-color: #222222;
@@ -201,4 +201,41 @@ tr.postContainer:nth-child(even){
 }
 tr.postContainer:nth-child(odd){
     background-color: #ccaba9;
+}
+div.newPostContainer {
+    width: 45%;
+    padding: 20px 40px;
+    margin: 0 10px;
+    background-color: #D2DEE0aa;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    border-radius: 5px 5px 5px 5px;
+}
+input.newAd{
+    width:100%;
+    font-size:13pt;
+    text-align:left;
+    background-color:#d2dee0aa;
+    border-color: black;
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+input.newPostButton {
+    background-color: #aa7370;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    color: black;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px 5px 5px 5px;
+    font-family: 'Titillium Web', Courier, monospace;
 }

@@ -1,20 +1,20 @@
 <?php
-// operacija1.php
-// skirtapakeisti savo sudaryta operacija pratybose
+    // operacija1.php
+    // skirtapakeisti savo sudaryta operacija pratybose
 
-session_start();
-// cia sesijos kontrole
-if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index"))
-{ header("Location:logout.php");exit;}
+    session_start();
+    // cia sesijos kontrole
+    if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index"))
+    { header("Location:logout.php");exit;}
 
-$server="localhost";
-$user="stud";
-$password="stud";
-$dbname="portalas";
-$lentele='object';
+    $server="localhost";
+    $user="stud";
+    $password="stud";
+    $dbname="portalas";
+    $lentele='object';
 
-$conn = new mysqli($server, $user, $password, $dbname);
-if ($conn->connect_error) die("Negaliu prisijungti: " . $conn->connect_error);
+    $conn = new mysqli($server, $user, $password, $dbname);
+    if ($conn->connect_error) die("Negaliu prisijungti: " . $conn->connect_error);
 
 ?>
 
@@ -42,7 +42,10 @@ if ($conn->connect_error) die("Negaliu prisijungti: " . $conn->connect_error);
                 </a>
             </div>
 
-            <br>
+            <div style="padding-top: 30px;"></div>
+
+            <p style="font-size:22pt; font-family: 'Titillium Web', sans-serif;"><b>Skelbimų sąrašas</b></p>
+
 
             <table class="postContainer">
                 <tr class="postContainer" style="font-size: 22px; font-weight: bold; text-align: center;">
