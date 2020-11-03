@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
+
+table.meniu {
+    text-align: left;
+    background-color: #d2dee0aa;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-color: #222222;
+    border-width: 1.5px;
+    border-style: solid; 
+    border-radius: 10px 10px 10px 10px;
+}
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+    margin-bottom: 50;
+    margin-top: 0px;
+    border-width: 2px;             
+}
+table.backlink {  
+    margin-left:auto; 
+    margin-right:auto;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    border-width: 13px;
+    border-style: solid;
+    border-color: red;    
+    background-color: cyan;   
+}
+body {
+    text-align:center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #222222;
+}  
+form.login {
+    margin-bottom:50;
+    padding:20px 50px; 
+    background-color: #d2dee0aa;
+    border-color: #222222;
+    border-width: 1.5px;
+    border-style: solid; 
+    border-radius: 10px 10px 10px 10px;
+}
+form.register {
+    margin-bottom:50;
+    padding:20px 50px; 
+    background-color: #d2dee0aa;
+    border-color: #222222;
+    border-width: 1.5px;
+    border-style: solid; 
+    border-radius: 10px 10px 10px 10px;
+}
+input.s1 {   
+    width:100%;
+    font-size:13pt;
+    text-align:left;
+    background-color:#d2dee0aa;
+    border-color: black;
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+input.button {
+    background-color: #aa7370;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    color: black;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px 5px 5px 5px;
+    font-family: 'Titillium Web', Courier, monospace;
+}
+input.login {
+    background-color: #924b48;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    color: black;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-radius: 5px 5px 5px 5px;
+    font-family: 'Titillium Web', Courier, monospace;
+    font-weight: bold;
+}
+a.button {
+    background-color: #aa7370;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    color: black;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px 5px 5px 5px;
+    font-family: 'Titillium Web', Courier, monospace;
+}
+a.meniu{
+    background-color: #aa7370;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    padding: 3px 5px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px 5px 5px 5px;
+    font-family: 'Titillium Web', Courier, monospace;
+    font-weight: bold;
+}
+a.register {
+    background-color: #aa7370;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    color: black;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-radius: 5px 5px 5px 5px;
+    font-family: 'Titillium Web', Courier, monospace;
+    font-weight: bold;
+}
+a.goBack {
+    text-align: center;
+    background-color: #D2DEE0;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    font-size: 17px;
+    border-radius: 5px 5px 5px 5px;
+    font-family: 'Titillium Web', Courier, monospace;
+    font-weight: bold;
+}
+h1.intro {
+    font-family: 'Titillium Web', Courier, monospace;
+    font-weight: bold;
+}
+div.intro {
+    margin-top: 15%;
+    text-align: center;
+    background-color: #D2DEE0;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    padding: 10px 20px;
+    border-radius: 5px 5px 5px 5px;
+}
