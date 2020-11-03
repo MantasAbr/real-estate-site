@@ -41,17 +41,17 @@ $_SESSION['prev'] = "useredit";
         <center style="font-size:24pt; font-family: 'Titillium Web', sans-serif;"><b>Paskyros redagavimas</b></center><br>
 		<center style="font-size:18pt; font-family: 'Titillium Web', sans-serif;"><b>Vartotojas: <?php echo $_SESSION['user'];  ?></b></center>
         
-        <p style="text-align:left;">Dabartinis slaptažodis:<br>
+        <p style="text-align:left;  font-family: 'Titillium Web', sans-serif;">Dabartinis slaptažodis:<br>
             <input class ="s1" name="pass" type="password" value="<?php echo $_SESSION['pass_login']; ?>"><br>
             <?php echo $_SESSION['pass_error']; ?>
         </p>
 			
-		<p style="text-align:left;">Naujas slaptažodis:<br>
+		<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Naujas slaptažodis:<br>
             <input class ="s1" name="passn" type="password" value="<?php echo $_SESSION['passn_login']; ?>"><br>
             <?php echo $_SESSION['passn_error']; ?>
         </p>	
 			
-		<p style="text-align:left;">E-paštas:<br>
+		<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">E-paštas:<br>
 			<input class ="s1" name="email" type="text" value="<?php echo $_SESSION['mail_login']; ?>"><br>
 			<?php echo $_SESSION['mail_error']; ?>
         </p> 

@@ -32,6 +32,7 @@ $role="";
         if ($userlevel == $user_roles[ADMIN_LEVEL] ) {
             echo "<a href=\"admin.php\" class=\"meniu\">Administratoriaus sąsaja</a> &nbsp;&nbsp;";
         }
+        if($_SESSION['user'] == "guest") echo "<br>";
         echo "<a href=\"logout.php\" class=\"meniu\" style=\"margin: 15px 0px; font-size: 14px; font-weight: lighter;\">Atsijungti</a>";
       echo "</td></tr></table>";
 ?>       
