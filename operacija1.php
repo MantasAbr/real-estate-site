@@ -4,7 +4,7 @@
 
     session_start();
     // cia sesijos kontrole
-    if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index"))
+    if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index") && ($_SESSION['prev'] != "procnewadvert"))
     { header("Location:logout.php");exit;}
 
     $server="localhost";

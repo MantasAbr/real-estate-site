@@ -2,22 +2,9 @@
 	// operacija3.php  Naujų skelbimų sukūrimo forma
 
 	session_start();
+
 	if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index"))
 	{ header("Location: logout.php");exit;}
-
-	$server="localhost";
-	$user="stud";
-	$password="stud";
-	$dbname="portalas";
-	$lentele='object';
-
-	$conn = new mysqli($server, $user, $password, $dbname);
-	if ($conn->connect_error) die("Negaliu prisijungti: " . $conn->connect_error);
-
-	if($_POST != NULL){
-		
-	}
-
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +52,6 @@
 						<input class="newPostButton" type="submit" value="Vykdyti">
 					</p>
 				</form>
-
 			</div>
 		</div>
 	<body>
