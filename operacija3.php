@@ -5,6 +5,42 @@
 
 	if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index"))
 	{ header("Location: logout.php");exit;}
+	
+	//include("include/nustatymai.php");
+    //reiktu susikurti nauja funkciju faila kur vyktu naujo skelbimo patikra
+	//include("include/functions.php");
+	
+	// $server="localhost";
+	// $user="stud";
+	// $password="stud";
+	// $dbname="portalas";
+	// $lentele='object';
+
+	// $conn = new mysqli($server, $user, $password, $dbname);
+	// if ($conn->connect_error) die("Negaliu prisijungti: " . $conn->connect_error);
+
+	// if($_POST != NULL){
+	// 	$address=htmlspecialchars($_POST['address']);
+	// 	$city=htmlspecialchars($_POST['city']);
+	// 	$price=$_POST['price'];
+	// 	$description=htmlspecialchars($_POST['description']);
+
+	// 	$object_id = md5(uniqid($description));
+	// 	$seller_id = 1;
+
+
+	// 	$sql= "INSERT INTO $lentele (object_id, seller_id, address, 
+	// 										city, price, description, upload_time)
+	// 			VALUES ('$object_id', '$seller_id', '$address', '$city', '$price', '$description', NOW())";
+	
+	// 	if (!$result = $conn->query($sql)) die("Negaliu įrašyti: " . $conn->error);
+
+	// 	$conn->close();
+
+	// 	header("Location:operacija1.php");
+	// 	exit();
+	// }
+	$_SESSION['prev']="operacija3";
 ?>
 
 <!DOCTYPE html>
