@@ -13,6 +13,7 @@ function inisession($arg) {   //valom sesijos kintamuosius
 		$_SESSION['name_login']="";
 		$_SESSION['pass_login']="";
 		$_SESSION['mail_login']="";
+		$_SESSION['telephone_login']=""; 
 		$_SESSION['name_error']="";
       	$_SESSION['pass_error']="";
 		$_SESSION['mail_error']="";
@@ -74,11 +75,30 @@ function checkmail($mail) {   // e-mail sintax error checking
 			{$_SESSION['mail_error']=
 				"<font size=\"2\" color=\"#ff0000\">* Neįvestas e-pašto adresas</font>";
 			   return false;}
-            elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) 
+		elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) 
 			      {$_SESSION['mail_error']=
 					   "<font size=\"2\" color=\"#ff0000\">* Neteisingas e-pašto adreso formatas</font>";
 		            return false;}
 	        else return true;
+}
+
+
+function checkphone($telephone) {
+	if(!$telephone || strlen($telephone = trim($telephone)) == 0){
+		$_SESSION['telephone_error'] = 
+			"<font size=\"2\" color=\"#ff0000\">* Neįvestas telefono numeris</font>";
+		return false;
+	}
+	else{
+		if(preg_match("/\+3706[0-9]{7}$/", $telephone) && strlen($telephone) == 12){
+			return true;
+		}
+		else{
+			$_SESSION['telephone_error'] = 
+				"<font size=\"2\" color=\"#ff0000\">* Blogas telefono numerio formatas</font>";
+			return false;
+		}
+	}
 }
 
 //parasyti funkcija kuri tikrintu telefona
