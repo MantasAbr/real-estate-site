@@ -16,6 +16,14 @@
     $conn = new mysqli($server, $user, $password, $dbname);
     if ($conn->connect_error) die("Negaliu prisijungti: " . $conn->connect_error);
 
+    include("include/nustatymai.php");
+    $user=$_SESSION['user'];
+    $userlevel=$_SESSION['ulevel'];
+    $role="";
+    {foreach($user_roles as $x=>$x_value)
+        {if ($x_value == $userlevel) $role=$x;}
+    } 
+
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +60,8 @@
                     <td class="postContainer" style="width: 20%;">Nuotrauka</td>
                     <td class="postContainer" style="width: 20%;">Vieta</td>
                     <td class="postContainer" style="width: 10%;">Kaina</td>
-                    <td class="postContainer" style="width: 55%;">Aprašymas</td>
+                    <td class="postContainer" style="width: 45%;">Aprašymas</td>
+                    <td class="postContainer" style="width: 10%;">Veiksmai</td>
                 </tr>
 
                 <?php			
@@ -64,9 +73,28 @@
                 while($row = $result->fetch_assoc()) {
                     echo "<tr class=\"postContainer\">
                             <td class=\"postContainer\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
-                            <td class=\"postContainer\">".$row['address']."<br>" .$row['city']."</td>
+                            <td style=\"font-size: 18px;\" class=\"postContainer\">".$row['address']."<br><br>" .$row['city']."</td>
                             <td class=\"postContainer\" style=\"font-weight: bold;\">".$row['price']." €</td>
                             <td class=\"postContainer\">".$row['description']."</td>
+                            <td class=\"postContainer\">
+                                <button class=\"postContainer\">
+                                    <i class=\"material-icons\" style=\"font-size: 27px;\">
+                                    forward_to_inbox
+                                    </i>
+                                </button>
+
+                                ".(($userlevel == $user_roles["Pardavėjas"]) || ($userlevel == $user_roles[ADMIN_LEVEL] ) ? "                                <br>
+                                <button class=\"postContainer\" style=\" color: darkred\">
+                                    <i class=\"material-icons\" style=\"font-size: 27px;\">
+                                    cancel
+                                    </i>
+                                </button>" 
+
+                                : 
+                                
+                                "")."
+                                
+                            </td>
                         </tr>";
                 }
 			
