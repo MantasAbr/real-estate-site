@@ -77,22 +77,32 @@
                             <td class=\"postContainer\" style=\"font-weight: bold;\">".$row['price']." €</td>
                             <td class=\"postContainer\">".$row['description']."</td>
                             <td class=\"postContainer\">
+                                
+                                ".(($userlevel == $user_roles["Pardavėjas"]) || ($userlevel == $user_roles[ADMIN_LEVEL] ) ? "
                                 <button class=\"postContainer\">
-                                    <i class=\"material-icons\" style=\"font-size: 27px;\">
-                                    forward_to_inbox
-                                    </i>
+                                <i class=\"material-icons\" style=\"font-size: 27px;\">
+                                edit
+                                </i>
                                 </button>
 
-                                ".(($userlevel == $user_roles["Pardavėjas"]) || ($userlevel == $user_roles[ADMIN_LEVEL] ) ? "                                <br>
+                                <br>  
+
                                 <button class=\"postContainer\" style=\" color: darkred\">
                                     <i class=\"material-icons\" style=\"font-size: 27px;\">
                                     cancel
                                     </i>
                                 </button>" 
 
-                                : 
+                                :  "")."                                                          
                                 
-                                "")."
+                                ".(($userlevel == $user_roles["Vartotojas"]) ?
+                                "<button class=\"postContainer\">
+                                    <i class=\"material-icons\" style=\"font-size: 27px;\">
+                                    forward_to_inbox
+                                    </i>
+                                </button>" 
+                                
+                                : "Neleidžiama")."
                                 
                             </td>
                         </tr>";
