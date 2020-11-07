@@ -61,7 +61,12 @@
                     <td class="postContainer" style="width: 20%;">Vieta</td>
                     <td class="postContainer" style="width: 10%;">Kaina</td>
                     <td class="postContainer" style="width: 45%;">Aprašymas</td>
-                    <td class="postContainer" style="width: 10%;">Veiksmai</td>
+                    <?php
+                        if($_SESSION['user'] == "guest")
+                            echo "";
+                        else
+                            echo "<td class=\"postContainer\" style=\"width: 10%;\">Veiksmai</td>";
+                    ?>
                 </tr>
 
                 <?php			
@@ -71,7 +76,16 @@
 
                 // parodyti
                 while($row = $result->fetch_assoc()) {
-                    echo "<tr class=\"postContainer\">
+                    if($_SESSION['user'] == "guest"){
+                        echo "<tr class=\"postContainer\">
+                            <td class=\"postContainer\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
+                            <td style=\"font-size: 18px;\" class=\"postContainer\">".$row['address']."<br><br>" .$row['city']."</td>
+                            <td class=\"postContainer\" style=\"font-weight: bold;\">".$row['price']." €</td>
+                            <td class=\"postContainer\">".$row['description']."</td>
+                            </tr>";
+                    }
+                    else{
+                        echo "<tr class=\"postContainer\">
                             <td class=\"postContainer\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
                             <td style=\"font-size: 18px;\" class=\"postContainer\">".$row['address']."<br><br>" .$row['city']."</td>
                             <td class=\"postContainer\" style=\"font-weight: bold;\">".$row['price']." €</td>
@@ -95,17 +109,18 @@
 
                                 :  "")."                                                          
                                 
-                                ".(($userlevel == $user_roles["Vartotojas"]) ?
+                                ".(($userlevel == $user_roles["Vartotojas"]) || ($userlevel == $user_roles[ADMIN_LEVEL] ) ?
                                 "<button class=\"postContainer\">
                                     <i class=\"material-icons\" style=\"font-size: 27px;\">
                                     forward_to_inbox
                                     </i>
                                 </button>" 
                                 
-                                : "Neleidžiama")."
+                                : "")."
                                 
                             </td>
                         </tr>";
+                    }
                 }
 			
 			    $conn->close();
