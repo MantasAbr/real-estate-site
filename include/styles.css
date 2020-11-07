@@ -187,8 +187,7 @@ table.postContainer {
     border-radius: 10px;
     border-style: hidden;
     box-shadow: 0 0 0 1px #222222;
-    overflow: hidden;
-    
+    overflow: hidden;   
 }
 td.postContainer {
     border-color: #222222;
@@ -243,4 +242,8 @@ textarea.request {
     resize: none;
     font-size: 18px;
     padding: 5px 5px;
+}
+img.postContainer {
+    width: 256px;
+    height: 144px;
 }

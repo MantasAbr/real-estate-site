@@ -49,8 +49,8 @@
 
             <table class="postContainer">
                 <tr class="postContainer" style="font-size: 22px; font-weight: bold; text-align: center;">
-                    <td class="postContainer" style="width: 20%;">Adresas</td>
-                    <td class="postContainer" style="width: 8%;">Miestas</td>
+                    <td class="postContainer" style="width: 20%;">Nuotrauka</td>
+                    <td class="postContainer" style="width: 20%;">Vieta</td>
                     <td class="postContainer" style="width: 10%;">Kaina</td>
                     <td class="postContainer" style="width: 55%;">Aprašymas</td>
                 </tr>
@@ -63,8 +63,8 @@
                 // parodyti
                 while($row = $result->fetch_assoc()) {
                     echo "<tr class=\"postContainer\">
-                            <td class=\"postContainer\">".$row['address']."</td>
-                            <td class=\"postContainer\">".$row['city']."</td>
+                            <td class=\"postContainer\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
+                            <td class=\"postContainer\">".$row['address']."<br>" .$row['city']."</td>
                             <td class=\"postContainer\" style=\"font-weight: bold;\">".$row['price']." €</td>
                             <td class=\"postContainer\">".$row['description']."</td>
                         </tr>";
