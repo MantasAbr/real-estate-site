@@ -100,5 +100,3 @@ function checkphone($telephone) {
 		}
 	}
 }
-
-//parasyti funkcija kuri tikrintu telefona

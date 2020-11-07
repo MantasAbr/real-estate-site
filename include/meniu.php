@@ -20,6 +20,9 @@ $role="";
         //Operacija skirta tik pirkėjui - Pirkti objektą
         if($userlevel == $user_roles["Vartotojas"]){
             echo "<a href=\"operacija2.php\" class=\"meniu\">Pirkti objektai</a> &nbsp;&nbsp;";
+        }
+        if($userlevel == $user_roles["Vartotojas"]){
+            echo "<a href=\"requesttoseller.php\" class=\"meniu\">Privilegijų aukštinimas</a> &nbsp;&nbsp;";
         }        
         //Trečia operacija tik rodoma pasirinktu kategoriju vartotojams, pvz.:
         if (($userlevel == $user_roles["Pardavėjas"]) || ($userlevel == $user_roles[ADMIN_LEVEL] )) {
