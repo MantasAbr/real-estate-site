@@ -71,7 +71,7 @@
 
                 <?php			
 			    //nuskaityti
-			    $sql =  "SELECT * FROM $lentele";
+			    $sql =  "SELECT * FROM $lentele WHERE is_sold=0 AND is_pending=0";
                 if (!$result = $conn->query($sql)) die("Negaliu nuskaityti: " . $conn->error);
 
                 // parodyti
@@ -102,17 +102,19 @@
                                 <br>  
 
                                 <a class=\"postContainer\" style=\" color: darkred\" href='deletepost.php?id=".$row['object_id']."'>
-                                    Ištrinti
+                                    <i class=\"material-icons\" style=\"font-size: 27px\">
+                                    cancel
+                                    </i>
                                 </a>" 
 
                                 :  "")."                                                          
                                 
                                 ".(($userlevel == $user_roles["Vartotojas"]) || ($userlevel == $user_roles[ADMIN_LEVEL] ) ?
-                                "<button class=\"postContainer\">
+                                "<a class=\"postContainer\" href='buypost.php?id=".$row['object_id']."'>
                                     <i class=\"material-icons\" style=\"font-size: 27px;\">
                                     forward_to_inbox
                                     </i>
-                                </button>" 
+                                </a>" 
                                 
                                 : "")."
                                 

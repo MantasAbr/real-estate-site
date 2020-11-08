@@ -166,6 +166,11 @@ a.postContainer {
     border-width: 1.5px;
     border-color: #222222;
     color: black;
+    text-decoration: none;
+    display: inline-flex;
+}
+a.postContainer:hover {
+    background-color: #d2dee0;
 }
 h1.intro {
     font-family: 'Titillium Web', Courier, monospace;
@@ -216,9 +221,6 @@ button.postContainer {
     border-width: 1.5px;
     border-color: #222222;
     color: black;
-}
-button.postContainer:hover {
-    background-color: #d2dee0;
 }
 tr.postContainer:nth-child(even){
     background-color: #aa7370;
