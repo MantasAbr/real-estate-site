@@ -101,11 +101,9 @@
 
                                 <br>  
 
-                                <button class=\"postContainer\" style=\" color: darkred\">
-                                    <i class=\"material-icons\" style=\"font-size: 27px;\">
-                                    cancel
-                                    </i>
-                                </button>" 
+                                <a class=\"postContainer\" style=\" color: darkred\" href='deletepost.php?id=".$row['object_id']."'>
+                                    Ištrinti
+                                </a>" 
 
                                 :  "")."                                                          
                                 
