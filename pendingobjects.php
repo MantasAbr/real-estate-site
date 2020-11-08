@@ -19,6 +19,11 @@ include("include/nustatymai.php");
 $user=$_SESSION['user'];
 $userid=$_SESSION['userid'];
 
+echo "<p style=\"color: red; font-family: 'Titillium Web', Courier, monospace; font-size: 18px;\">
+".$_SESSION['message'] . "<br></p>"; 
+
+$_SESSION['message']="";
+
 ?>
 
 <!DOCTYPE html>

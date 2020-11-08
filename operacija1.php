@@ -55,6 +55,21 @@
                 </a>
             </div>
 
+            <?php
+                if(($userlevel == $user_roles["Pardavėjas"])){
+                    echo "
+                        <div style=\"float:right;\">
+                            <a href=\"sellerviewsoldproperties.php\" class=\"goBack\">
+                                <i class=\"material-icons\" style=\"font-size: 27px; padding: 0 5px;\">
+                                library_books</i>
+                            Parduoti skelbimai
+                            </a>
+                        </div>
+                    ";
+                }
+            ?>
+
+
             <div style="padding-top: 30px;"></div>
 
             <p style="font-size:22pt; font-family: 'Titillium Web', sans-serif;"><b>Skelbimų sąrašas</b></p>
