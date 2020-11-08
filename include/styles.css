@@ -160,7 +160,7 @@ a.postContainer {
     margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0px 28px;
+    padding: 2px 28px;
     background-color: #d2dee0aa;
     border-style: solid;
     border-width: 1.5px;
@@ -170,6 +170,22 @@ a.postContainer {
     display: inline-flex;
 }
 a.postContainer:hover {
+    background-color: #d2dee0;
+}
+a.postContainerActions {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2px 7px;
+    background-color: #d2dee0aa;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    color: black;
+    text-decoration: none;
+    display: inline-flex;
+}
+a.postContainerActions:hover {
     background-color: #d2dee0;
 }
 h1.intro {

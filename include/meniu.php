@@ -29,7 +29,7 @@ $role="";
             echo "<a href=\"operacija3.php\" class=\"meniu\">Įkelti naują skelbimą</a> &nbsp;&nbsp;";
         }
         if(($userlevel == $user_roles["Pardavėjas"])){
-            echo "<a href=\"operacija4.php\" class=\"meniu\">Patvirtinimo laukiantys skelbimai</a> &nbsp;&nbsp;";
+            echo "<a href=\"pendingobjects.php\" class=\"meniu\">Patvirtinimo laukiantys skelbimai</a> &nbsp;&nbsp;";
         }          
         //Administratoriaus sąsaja rodoma tik administratoriui
         if ($userlevel == $user_roles[ADMIN_LEVEL] ) {
