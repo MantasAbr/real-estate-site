@@ -22,7 +22,12 @@
     $role="";
     {foreach($user_roles as $x=>$x_value)
         {if ($x_value == $userlevel) $role=$x;}
-    } 
+    }
+    
+    echo "<p style=\"color: red; font-family: 'Titillium Web', Courier, monospace; font-size: 18px;\">
+    ".$_SESSION['message'] . "<br></p>"; 
+
+    $_SESSION['message']="";
 
 ?>
 
@@ -93,11 +98,11 @@
                             <td class=\"postContainer\">
                                 
                                 ".(($userlevel == $user_roles["Pardavėjas"]) || ($userlevel == $user_roles[ADMIN_LEVEL] ) ? "
-                                <button class=\"postContainer\">
-                                <i class=\"material-icons\" style=\"font-size: 27px;\">
-                                edit
-                                </i>
-                                </button>
+                                <a class=\"postContainer\" href='editpost.php?id=".$row['object_id']."'>
+                                    <i class=\"material-icons\" style=\"font-size: 27px;\">
+                                    edit
+                                    </i>
+                                </a>
 
                                 <br>  
 

@@ -1,7 +1,10 @@
 <?php
 
+    session_start();
+
     include("include/nustatymai.php");
     $id = $_GET['id'];
+    $_SESSION['message']="";
     
     $conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
@@ -13,10 +16,13 @@
 
     if(mysqli_query($conn, $sql)){
         mysqli_close($conn);
+        $_SESSION['message']="Objektas sėkmingai ištrintas";
         header('Location: operacija1.php');
         exit;
     }
     else{
-        echo "Klaida trinant įrašą.";
+        $_SESSION['message']="Klaida trinant įrašą";
+        header('Location: operacija1.php');
+        exit;
     }
 ?>
