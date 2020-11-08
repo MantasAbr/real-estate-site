@@ -80,7 +80,6 @@
                     <td class="postContainer" style="width: 20%;">Nuotrauka</td>
                     <td class="postContainer" style="width: 20%;">Vieta</td>
                     <td class="postContainer" style="width: 10%;">Kaina</td>
-                    <td class="postContainer" style="width: 45%;">Aprašymas</td>
                     <?php
                         if($_SESSION['user'] == "guest")
                             echo "";
@@ -101,42 +100,52 @@
                             <td class=\"postContainer\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
                             <td style=\"font-size: 18px;\" class=\"postContainer\">".$row['address']."<br><br>" .$row['city']."</td>
                             <td class=\"postContainer\" style=\"font-weight: bold;\">".$row['price']." €</td>
-                            <td class=\"postContainer\">".$row['description']."</td>
                             </tr>";
                     }
                     else{
                         echo "<tr class=\"postContainer\">
-                            <td class=\"postContainer\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
-                            <td style=\"font-size: 18px;\" class=\"postContainer\">".$row['address']."<br><br>" .$row['city']."</td>
+                            <td class=\"postContainer\" style=\"text-align:center;\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
+                            <td style=\"font-size: 18px;\" class=\"postContainer\">Adresas: <b>".$row['address']."</b><br><br>Miestas: <b>" .$row['city']."</b></td>
                             <td class=\"postContainer\" style=\"font-weight: bold;\">".$row['price']." €</td>
-                            <td class=\"postContainer\">".$row['description']."</td>
-                            <td class=\"postContainer\">
+                            <td class=\"postContainer\" style=\"text-align:center;\">
+                            
+                                <a class=\"postContainerActions\" style=\"padding: 2px 10px 2px 8px;\" href='moreinfopost.php?id=".$row['object_id']."'>
+                                    <i class=\"material-icons\" style=\"font-size: 27px; padding-right: 3px;\">
+                                    info
+                                    </i>
+                                    Informacija
+                                </a>
                                 
                                 ".(($userlevel == $user_roles["Pardavėjas"]) || ($userlevel == $user_roles[ADMIN_LEVEL] ) ? "
-                                <a class=\"postContainer\" href='editpost.php?id=".$row['object_id']."'>
-                                    <i class=\"material-icons\" style=\"font-size: 27px;\">
+                                <a class=\"postContainerActions\" style=\"padding: 2px 15.25px 2px 8px;\" href='editpost.php?id=".$row['object_id']."'>
+                                    <i class=\"material-icons\" style=\"font-size: 27px; padding-right: 4px;\">
                                     edit
                                     </i>
+                                    Redaguoti
                                 </a>
 
                                 <br>  
 
-                                <a class=\"postContainer\" style=\" color: darkred\" href='deletepost.php?id=".$row['object_id']."'>
-                                    <i class=\"material-icons\" style=\"font-size: 27px\">
+                                <a class=\"postContainerActions\" style=\"padding: 2px 29px 2px 8px; color: darkred\" href='deletepost.php?id=".$row['object_id']."'>
+                                    <i class=\"material-icons\" style=\"font-size: 27px; padding-right: 15px;\">
                                     cancel
                                     </i>
+                                    Ištrinti
                                 </a>" 
 
                                 :  "")."                                                          
                                 
                                 ".(($userlevel == $user_roles["Vartotojas"]) || ($userlevel == $user_roles[ADMIN_LEVEL] ) ?
-                                "<a class=\"postContainer\" href='buypost.php?id=".$row['object_id']."'>
-                                    <i class=\"material-icons\" style=\"font-size: 27px;\">
+                                "<a class=\"postContainerActions\" style=\"padding: 2px 34px 2px 8px;\" href='buypost.php?id=".$row['object_id']."'>
+                                    <i class=\"material-icons\" style=\"font-size: 27px; padding-right: 18px;\">
                                     forward_to_inbox
                                     </i>
+                                    Pirkti
                                 </a>" 
                                 
                                 : "")."
+
+
                                 
                             </td>
                         </tr>";

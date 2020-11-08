@@ -48,7 +48,7 @@
 					<input class ="newAd" name="price" type="text" placeholder="" maxlength="15"><br>
 
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Aprašymas:<br>
-					<input class ="newAd" name="description" type="text" placeholder="Max 200 simbolių" maxlength="200" style="padding: 20px 0;"><br>
+					<input class ="newAd" name="description" type="text" placeholder="Max 200 simbolių" maxlength="199" style="padding: 20px 0;"><br>
 
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Nuotrauka:<br>
 					<input name="image" type="file" style="padding: 20px 0;"><br>
