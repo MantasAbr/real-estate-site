@@ -69,7 +69,7 @@ $userid=$_SESSION['userid'];
                                 while($buyer_row = $buyer_result->fetch_assoc()){
                                     echo "<tr class=\"postContainer\">
                                         <td class=\"postContainer\" style=\"text-align:center;\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
-                                        <td style=\"font-size: 18px;\" class=\"postContainer\">".$row['address']."<br><br>" .$row['city']."</td>
+                                        <td style=\"font-size: 18px;\" class=\"postContainer\">Adresas: <b>".$row['address']."</b><br><br>Miestas: <b>" .$row['city']."</b></td>
                                         <td class=\"postContainer\" style=\"font-weight: bold;\">".$row['price']." €</td>
                                         <td class=\"postContainer\"><b>".$buyer_row['username']."</b><br><br>tel. <b>"
                                                                         .$buyer_row['telephone']."</b><br><br>e. paštas <b>"

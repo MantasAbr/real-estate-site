@@ -23,12 +23,6 @@
     {foreach($user_roles as $x=>$x_value)
         {if ($x_value == $userlevel) $role=$x;}
     }
-    
-    echo "<p style=\"color: red; font-family: 'Titillium Web', Courier, monospace; font-size: 18px;\">
-    ".$_SESSION['message'] . "<br></p>"; 
-
-    $_SESSION['message']="";
-
 ?>
 
 <!DOCTYPE html>
@@ -74,10 +68,13 @@
 
             <p style="font-size:22pt; font-family: 'Titillium Web', sans-serif;"><b>Skelbimų sąrašas</b></p>
 
+            <?php echo "<p style=\"color: red; font-family: 'Titillium Web', Courier, monospace; font-size: 18px;\">
+                ".$_SESSION['message'] . "<br></p>"; $_SESSION['message']="";?>
+
 
             <table class="postContainer">
                 <tr class="postContainer" style="font-size: 22px; font-weight: bold; text-align: center;">
-                    <td class="postContainer" style="width: 20%;">Nuotrauka</td>
+                    <td class="postContainer" style="width: 5%;">Nuotrauka</td>
                     <td class="postContainer" style="width: 20%;">Vieta</td>
                     <td class="postContainer" style="width: 10%;">Kaina</td>
                     <?php
@@ -106,7 +103,7 @@
                         echo "<tr class=\"postContainer\">
                             <td class=\"postContainer\" style=\"text-align:center;\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
                             <td style=\"font-size: 18px;\" class=\"postContainer\">Adresas: <b>".$row['address']."</b><br><br>Miestas: <b>" .$row['city']."</b></td>
-                            <td class=\"postContainer\" style=\"font-weight: bold;\">".$row['price']." €</td>
+                            <td class=\"postContainer\" style=\"font-weight: bold; font-size: 20px;\">".$row['price']." €</td>
                             <td class=\"postContainer\" style=\"text-align:center;\">
                             
                                 <a class=\"postContainerActions\" style=\"padding: 2px 10px 2px 8px;\" href='moreinfopost.php?id=".$row['object_id']."'>
