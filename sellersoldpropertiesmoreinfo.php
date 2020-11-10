@@ -14,9 +14,12 @@
 
     $result = mysqli_query($conn, "SELECT * FROM object WHERE object_id='$id'");
     $row = mysqli_fetch_assoc($result);
-    $date = date_create_from_format('Y-m-d H:i:s', $row['upload_time']);
+    $uploadDate = date_create_from_format('Y-m-d H:i:s', $row['upload_time']);
+    $buyDate = date_create_from_format('Y-m-d H:i:s', $row['buy_time']);
+    $buyerId = $row['buyer_id'];
 
-    $conn->close();
+    $buyer_result = mysqli_query($conn, "SELECT * FROM vartotojas WHERE userid='$buyerId'");
+    $buyerRow = mysqli_fetch_assoc($buyer_result);
 ?>
 
 <!DOCTYPE html>
@@ -30,9 +33,9 @@
 		<style>body{background-image: url("include/background.png");}</style>
     </head>
 
-    <body style="width: 70%; margin-left: auto; margin-right: auto;">
+    <body style="width: 90%; margin-left: auto; margin-right: auto;">
     <div align="center">			
-	    <div class="postContainer">
+	    <div class="infoContainer">
 
             <div style="float:left;"> 
                 <a href="operacija1.php" class="goBack">
@@ -70,7 +73,21 @@
 
             <div class="moreInfoContainer">
                 <p style="float: left; text-align:left; width: 50%;">Ikelta:</p>
-                <p style="float: left; text-align:right; width: 50%;"><b><?php echo date_format($date, 'Y-m-d H:m');?></b></p>
+                <p style="float: left; text-align:right; width: 50%;"><b><?php echo date_format($uploadDate, 'Y-m-d H:m');?></b></p>
+            </div>
+            <div style="clear: both;"></div>
+
+            <div class="moreInfoContainer">
+                <p style="float: left; text-align:left; width: 50%;">Nupirkta:</p>
+                <p style="float: left; text-align:right; width: 50%;"><b><?php echo date_format($buyDate, 'Y-m-d H:m');?></b></p>
+            </div>
+            <div style="clear: both;"></div>
+
+            <div class="moreInfoContainer">
+                <p style="float: left; text-align:left; width: 50%;">Pirkėjo duomenys:</p>
+                <p style="float: right; text-align:right; width: 50%;">vardas: <b><?php echo $buyerRow['username'];?></b></p>
+                <p style="float: right; text-align:right; width: 100%;">e. paštas: <b><?php echo $buyerRow['email'];?></b></p>
+                <p style="float: right; text-align:right; width: 100%;">tel. <b><?php echo $buyerRow['telephone'];?></b></p>
             </div>
             <div style="clear: both;"></div>
 

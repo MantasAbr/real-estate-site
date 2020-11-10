@@ -19,10 +19,6 @@ include("include/nustatymai.php");
 $user=$_SESSION['user'];
 $userid=$_SESSION['userid'];
 
-echo "<p style=\"color: red; font-family: 'Titillium Web', Courier, monospace; font-size: 18px;\">
-".$_SESSION['message'] . "<br></p>"; 
-
-$_SESSION['message']="";
 
 ?>
 
@@ -37,7 +33,7 @@ $_SESSION['message']="";
 		<style>body{background-image: url("include/background.png");}</style>
     </head>
 
-    <body style="width: 90%; margin-left: auto; margin-right: auto;">
+    <body style="width: 85%; margin-left: 15%;">
     
         <div class="postContainer">
 
@@ -55,6 +51,9 @@ $_SESSION['message']="";
                 <p style="font-size:22pt; font-family: 'Titillium Web', sans-serif;"><b>Patvirtinimo laukiantys skelbimai</b></p>
                 <p style="font-size:16pt; font-family: 'Titillium Web', sans-serif;">Pardavėjas: <b style="font-size:16pt;"><?php echo $user;?></b></p>
 
+                <?php echo "<p style=\"color: red; font-family: 'Titillium Web', Courier, monospace; font-size: 18px;\">
+                ".$_SESSION['message'] . "<br></p>"; $_SESSION['message']="";?>
+
                 <?php
                     $sql =  "SELECT * FROM $lentele WHERE is_sold=0 AND is_pending=1 AND seller_id='$userid'";
                     if (!$result = $conn->query($sql)) die("Negaliu nuskaityti: " . $conn->error);
@@ -69,7 +68,7 @@ $_SESSION['message']="";
                                 <td class=\"postContainer\" style=\"width: 10%;\">Kaina</td>
                                 <td class=\"postContainer\" style=\"width: 30%;\">Aprašymas</td>
                                 <td class=\"postContainer\" style=\"width: 25%;\">Pirkėjo informacija</td>
-                                <td class=\"postContainer\" style=\"width: 10%;\">Veiksmai</td>                     
+                                <td class=\"postContainer\" style=\"width: 8%;\">Veiksmai</td>                     
                             </tr>";
                         
 
@@ -79,7 +78,7 @@ $_SESSION['message']="";
                             if (!$buyer_result = $conn->query($buyer_sql)) die("Negaliu nuskaityti: " . $conn->error);
                             while($buyer_row = $buyer_result->fetch_assoc()){
                                 echo "<tr class=\"postContainer\">
-                                    <td class=\"postContainer\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
+                                    <td class=\"postContainer\" style=\"text-align:center;\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
                                     <td style=\"font-size: 18px;\" class=\"postContainer\">".$row['address']."<br><br>" .$row['city']."</td>
                                     <td class=\"postContainer\" style=\"font-weight: bold;\">".$row['price']." €</td>
                                     <td class=\"postContainer\">".$row['description']."</td>

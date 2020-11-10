@@ -84,7 +84,7 @@
                         if($_SESSION['user'] == "guest")
                             echo "";
                         else
-                            echo "<td class=\"postContainer\" style=\"width: 10%;\">Veiksmai</td>";
+                            echo "<td class=\"postContainer\" style=\"width: 6%;\">Veiksmai</td>";
                     ?>
                 </tr>
 
@@ -97,7 +97,7 @@
                 while($row = $result->fetch_assoc()) {
                     if($_SESSION['user'] == "guest"){
                         echo "<tr class=\"postContainer\">
-                            <td class=\"postContainer\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
+                            <td class=\"postContainer\" style=\"text-align:center;\"><img class=\"postContainer\" src='images/".$row['image']."'></td>                            
                             <td style=\"font-size: 18px;\" class=\"postContainer\">".$row['address']."<br><br>" .$row['city']."</td>
                             <td class=\"postContainer\" style=\"font-weight: bold;\">".$row['price']." €</td>
                             </tr>";
