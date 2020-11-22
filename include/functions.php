@@ -67,7 +67,7 @@ function checkname ($username){   // Vartotojo vardo sintakse
 		 $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 		 $sql = "SELECT * FROM " . TBL_USERS. " WHERE username = '$username'";
 		 $result = mysqli_query($db, $sql);
-	     $uname = $upass = $ulevel = $uid = $umail = null;
+	     $uname = $upass = $ulevel = $uid = $umail = $utelephone = null;
 		 if (!$result || (mysqli_num_rows($result) != 1))   // jei >1 tai DB vardas kartojasi, netikrinu, imu pirma
 	  	 {  // neradom vartotojo DB
 		    $_SESSION['name_error']=
@@ -76,8 +76,9 @@ function checkname ($username){   // Vartotojo vardo sintakse
       else {  //vardas yra DB
            $row = mysqli_fetch_assoc($result); 
            $uname= $row["username"]; $upass= $row["password"]; 
-           $ulevel=$row["userlevel"]; $uid= $row["userid"]; $umail = $row["email"];}
-     return array($uname,$upass,$ulevel,$uid,$umail);
+		   $ulevel=$row["userlevel"]; $uid= $row["userid"]; 
+		   $umail = $row["email"]; $utelephone = $row["telephone"];}
+     return array($uname,$upass,$ulevel,$uid,$umail,$utelephone);
  }
 
 function checkmail($mail) {   // e-mail sintax error checking  

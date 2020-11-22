@@ -25,12 +25,13 @@ session_start();
   else {$_SESSION['message']="Pabandykite dar kartą";}
             
         if (checkname($user)) //vardo sintakse
-        { list($dbuname,$dbpass,$dblevel,$dbuid,$dbemail)=checkdb($user);  //patikrinam ir jei randam, nuskaitom DB       
+        { list($dbuname,$dbpass,$dblevel,$dbuid,$dbemail,$dbtelephone)=checkdb($user);  //patikrinam ir jei randam, nuskaitom DB       
          if ($dbuname)  {  //yra vartotojas DB
            
 		   $_SESSION['ulevel']=$dblevel; 
 		   $_SESSION['userid']=$dbuid;
-           $_SESSION['umail']=$dbemail; 
+		   $_SESSION['umail']=$dbemail;
+		   $_SESSION['utelephone']=$dbtelephone;  
            // $_SESSION['user'] - nustatysim veliau, jei slaptazodis  geras
 		   if (isset($_POST['problem'])){  // vartotojas praso priminti slaptazodi
                               header("Location:forgotpass.php");exit;

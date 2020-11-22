@@ -9,7 +9,8 @@ if (!isset($_SESSION['prev']) || (($_SESSION['prev'] != "index") && ($_SESSION['
 {header("Location: logout.php");exit;
 }
 if ($_SESSION['prev'] == "index")								  
-	{$_SESSION['mail_login'] = $_SESSION['umail'];
+    {$_SESSION['mail_login'] = $_SESSION['umail'];
+    $_SESSION['telephone_login'] = $_SESSION['utelephone'];
 	$_SESSION['passn_error'] = "";      // papildomi kintamieji naujam password įsiminti
 	$_SESSION['passn_login'] = ""; }  //visos kitos turetų būti tuščios
 $_SESSION['prev'] = "useredit"; 
@@ -54,6 +55,11 @@ $_SESSION['prev'] = "useredit";
 		<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">E-paštas:<br>
 			<input class ="s1" name="email" type="text" value="<?php echo $_SESSION['mail_login']; ?>"><br>
 			<?php echo $_SESSION['mail_error']; ?>
+        </p> 
+
+        <p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Tel. nr.:<br>
+			<input class ="s1" name="telephone" type="text" value="<?php echo $_SESSION['telephone_login']; ?>"><br>
+			<?php echo $_SESSION['telephone_error']; ?>
         </p> 
 			
         <p style="text-align:center;">

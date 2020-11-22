@@ -20,6 +20,7 @@ session_start();
   $pass=$_POST['pass'];$_SESSION['pass_login']=$pass;    //senas
   $passn=$_POST['passn'];$_SESSION['passn_login']=$passn;   //naujas
   $mail=$_POST['email']; $_SESSION['mail_login']=$mail; 
+  $telephone=$_POST['telephone']; $_SESSION['telephone_login']=$telephone;
 
   list(,$dbpass)=checkdb($user); //paimam slaptazodzio maisa is DB
 	   if (!$dbpass)
@@ -30,10 +31,10 @@ session_start();
     {$ar_pasnn=checkpass($passn,substr(hash('sha256',$passn),5,32)); // ar geras naujas
 	 $ar_mail=checkmail($mail);                        // ar geras epasto laukas
 	 if ( $ar_pasnn && $ar_mail)  // lauku reiksmes geros
-      { if ($pass != $passn || $mail != $_SESSION['umail'])   // vartotojas kazka keicia
+      { if ($pass != $passn || $mail != $_SESSION['umail'] || $telephone != $_SESSION['utelephone'])   // vartotojas kazka keicia
 	            {$dbpass=substr(hash('sha256',$passn),5,32);
                  $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-                 $sql = "UPDATE ". TBL_USERS." SET password='$dbpass' ,  email='$mail'   WHERE  username='$user'";
+                 $sql = "UPDATE ". TBL_USERS." SET password='$dbpass' ,  email='$mail' , telephone='$telephone'   WHERE  username='$user'";
 				         if (!mysqli_query($db, $sql)) {
                    echo " DB klaida keiciant slaptazodi ir epasto adresa: " . $sql . "<br>" . mysqli_error($db);
 		               exit;}

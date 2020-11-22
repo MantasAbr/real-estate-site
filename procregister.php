@@ -36,7 +36,7 @@ if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "register"))
     else {  // gerai, vardas naujas
       $_SESSION['name_error']= "";
 
-      if (checkpass($pass,substr(hash('sha256',$pass),5,32))  && checkmail($mail)) // antra tikrinimo dalis checkpass bus true
+      if (checkpass($pass,substr(hash('sha256',$pass),5,32))  && checkmail($mail) && checkphone($telephone)) // antra tikrinimo dalis checkpass bus true
       { // viskas tinka sukurti vartotojo irasa DB
         $userid=md5(uniqid($user));                          //naudojam toki userid
         $pass=substr(hash('sha256',$pass),5,32);     // DB password skirti 32 baitai, paimam is maisos vidurio 
