@@ -26,11 +26,17 @@ $_SESSION['prev']="procrequesttoseller";
 $conn = new mysqli($server, $user, $password, $dbname);
 if ($conn->connect_error) die("Negaliu prisijungti: " . $conn->connect_error);
 
-$sql= "INSERT INTO $lentele (user_id, message, is_approved)
-            VALUES ('$user_id', '$message', '$is_approved')";
+if(checkdescription($message)){
+    $sql= "INSERT INTO $lentele (user_id, message, is_approved)
+    VALUES ('$user_id', '$message', '$is_approved')";
 
-if (!$result = $conn->query($sql)) die("Negaliu įrašyti: " . $conn->error);
-            
-$conn->close();
-header("Location:requesttoseller.php");
-exit;
+    if (!$result = $conn->query($sql)) die("Negaliu įrašyti: " . $conn->error);
+        
+    $conn->close();
+    header("Location:requesttoseller.php");
+    exit;
+}
+else {
+    header("Location:requesttoseller.php");
+    exit;
+}
