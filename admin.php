@@ -29,7 +29,8 @@ date_default_timezone_set("Europe/Vilnius");
 		<center><b><?php echo $_SESSION['message']; ?></b></center>
 		<form name="vartotojai" action="procadmin.php" method="post">
 	    <table class="center" style=" width:75%; border-width: 2px; border-style: dotted;">
-		         <tr><td width=30%><a href="index.php">[Atgal]</a></td><td width=30%> 
+		         <tr><td width=30%><a href="index.php">[Atgal]</a></td><td width=30%>
+				 <tr><td ><a href="adminviewrequests.php">Privilegijų aukštinimo prašymai</a></td><td width=30%>  
 	<?php
 		   if ($uregister != "self") echo "<a href=\"register.php\"><b>Registruoti naują vartotoją<b></a><td>";
 		   else echo "</td>";

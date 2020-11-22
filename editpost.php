@@ -80,7 +80,7 @@
 				<form method="POST" enctype="multipart/form-data" id="description">
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Adresas:<br>
 					<input class ="newAd" name="address" type="text" maxlength="50" value=<?php echo "\"{$row['address']}\"";?>><br>
-					<!--Error control here-->
+                    
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Miesto pavadinimas:<br>
 					<input class ="newAd" name="city" type="text" maxlength="50" value=<?php echo "\"{$row['city']}\"";?>><br>
 
