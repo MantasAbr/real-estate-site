@@ -3,8 +3,11 @@
 
 	session_start();
 
-	if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index") && ($_SESSION['prev'] != "operacija3"))
+	if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index") && ($_SESSION['prev'] != "operacija3")&& ($_SESSION['prev'] != "procnewadvert"))
 	{ header("Location: logout.php");exit;}
+
+	include("include/nustatymai.php");
+	include("include/functions.php");
 	
 	$_SESSION['prev']="operacija3";
 ?>
@@ -37,22 +40,22 @@
 
 				<div style="padding-top: 30px;"></div>
 
-				<form action="procnewadvert.php" method="POST" enctype="multipart/form-data">
+				<form action="procnewadvert.php" method="POST" enctype="multipart/form-data" id="description">
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Adresas:<br>
 					<input class ="newAd" name="address" type="text" placeholder="Nekilnojamojo turto vietos adresas" maxlength="50"><br>
-					<!--Error control here-->
+					<?php echo $_SESSION['address_error']; ?>
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Miesto pavadinimas:<br>
 					<input class ="newAd" name="city" type="text" placeholder="Miestas, kuriame yra nekilnojamasis turtas" maxlength="50"><br>
-
+					<?php echo $_SESSION['city_error']; ?>
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Kaina eurais:<br>
 					<input class ="newAd" name="price" type="text" placeholder="" maxlength="15"><br>
-
+					<?php echo $_SESSION['price_error']; ?>
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Aprašymas:<br>
-					<input class ="newAd" name="description" type="text" placeholder="Max 200 simbolių" maxlength="199" style="padding: 20px 0;"><br>
-
+					<textarea autofocus="true" rows="4" cols="50" class="newAd" maxlength="200" id="description" name="description" form="description" placeholder="Įveskite tekstą..."></textarea><br>
+					<?php echo $_SESSION['description_error']; ?>
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Nuotrauka:<br>
 					<input name="image" type="file" style="padding: 20px 0;"><br>
-
+					<?php echo $_SESSION['image_error']; ?>
 
 					<p style="text-align:center; padding: 15px 0;">
 						<input class="newPostButton" type="submit" value="Vykdyti">

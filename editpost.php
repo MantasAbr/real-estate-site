@@ -2,6 +2,7 @@
     session_start();
 
     include("include/nustatymai.php");
+    include("include/functions.php");
     $id = $_GET['id'];
     $_SESSION['message']="";
     
@@ -14,6 +15,7 @@
     $query = "SELECT * FROM object WHERE object_id = '$id'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
+    $description = $row['description'];
 
     if($_POST !=null){
         $target="images/".basename($_FILES['image']['name']);
@@ -24,28 +26,36 @@
         $description=htmlspecialchars($_POST['description']);
         $image=$_FILES['image']['name'];
 
-        $sql = "UPDATE object SET image='$image', address='$address', city='$city', price='$price', description='$description'
-        WHERE object_id='$id'";
-
-        if(move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-            echo "Okay";
+        if(checkaddress($address) && checkcity($city) && checkprice($price) && checkdescription($description)){
+            $sql = "UPDATE object SET image='$image', address='$address', city='$city', price='$price', description='$description'
+            WHERE object_id='$id'";
+    
+            if(move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+                echo "Okay";
+            }
+            else{
+                $_SESSION['message']="Neįkelta nuotrauka";
+                header("Location:operacija1.php");
+                exit;
+    
+            }
+            if (!$result = $conn->query($sql)){
+                $_SESSION['message']="Įrašymo klaida";
+                header("Location:operacija1.php");
+                exit;
+            } 
+    
+            $_SESSION['message']="Objektas sėkmingai redaguotas";    
+            $conn->close();
+            header("Location:operacija1.php");
+            exit;
         }
         else{
-            $_SESSION['message']="Neįkelta nuotrauka";
+            $_SESSION['message']="Redagavimo laukų sintaksės klaida. Ar tikrai įvedėte formos reikšmes teisingai?";
+            $conn->close();
             header("Location:operacija1.php");
             exit;
-
         }
-        if (!$result = $conn->query($sql)){
-            $_SESSION['message']="Įrašymo klaida";
-            header("Location:operacija1.php");
-            exit;
-        } 
-
-        $_SESSION['message']="Objektas sėkmingai redaguotas";    
-        $conn->close();
-        header("Location:operacija1.php");
-        exit;
     }
 ?>
 
@@ -67,7 +77,7 @@
 
 				<div style="padding-top: 30px;"></div>
 
-				<form method="POST" enctype="multipart/form-data">
+				<form method="POST" enctype="multipart/form-data" id="description">
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Adresas:<br>
 					<input class ="newAd" name="address" type="text" maxlength="50" value=<?php echo "\"{$row['address']}\"";?>><br>
 					<!--Error control here-->
@@ -78,7 +88,7 @@
 					<input class ="newAd" name="price" type="text" maxlength="15" value=<?php echo "\"{$row['price']}\"";?>><br>
 
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Aprašymas:<br>
-					<input class ="newAd" name="description" type="text" maxlength="200" style="padding: 20px 0;" value=<?php echo "\"{$row['description']}\"";?>><br>
+                    <textarea autofocus="true" rows="4" cols="50" class="newAd" maxlength="200" id="description" name="description" form="description"><?php echo $description;?></textarea><br>
 
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Nuotrauka:<br>
 					<input name="image" type="file" style="padding: 20px 0;"><br>
