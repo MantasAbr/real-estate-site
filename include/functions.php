@@ -26,7 +26,8 @@ function inisession($arg) {   //valom sesijos kintamuosius
 		$_SESSION['address_error']="";
 		$_SESSION['city_error']="";
 		$_SESSION['price_error']="";
-		$_SESSION['description_error']=""; 
+		$_SESSION['description_error']="";
+		$_SESSION['image_error']="";  
         }
 
 function checkname ($username){   // Vartotojo vardo sintakse
