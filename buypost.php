@@ -13,7 +13,7 @@
         die("Nepavyko prisijungti! ". mysqli_connect_error());
     }
 
-    $sql = "UPDATE object SET is_pending=1, buyer_id='$buyer' WHERE object_id = '$id'";
+    $sql = "UPDATE object SET is_pending=1, times_reserved=times_reserved+1, buyer_id='$buyer' WHERE object_id = '$id'";
 
     if(mysqli_query($conn, $sql)){
         mysqli_close($conn);

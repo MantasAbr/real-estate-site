@@ -5,6 +5,7 @@
     include("include/nustatymai.php");
     $id = $_GET['id'];
     $_SESSION['message']="";
+    $userID=$_SESSION['userid'];
     
     $conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
@@ -84,6 +85,18 @@
                 <p style="float: left; text-align:right; width: 50%;"><b><?php echo $row['views'];?></b></p>
             </div>
             <div style="clear: both;"></div>
+
+            <?php
+                if($userID == $row['seller_id']){
+                    echo "
+                        <div class=\"moreInfoContainer\">
+                            <p style=\"float: left; text-align:left; width: 50%;\">Rezervacijų kiekis:</p>
+                            <p style=\"float: left; text-align:right; width: 50%;\"><b>"; echo $row['times_reserved']; echo "</b></p>
+                        </div>
+                        <div style=\"clear: both;\"></div>              
+                    ";
+                }
+            ?>
 
             <div class="moreInfoContainer"></div>
 

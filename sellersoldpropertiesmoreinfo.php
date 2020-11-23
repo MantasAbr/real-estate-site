@@ -84,6 +84,18 @@
             <div style="clear: both;"></div>
 
             <div class="moreInfoContainer">
+                <p style="float: left; text-align:left; width: 50%;">Peržiūrų kiekis:</p>
+                <p style="float: left; text-align:right; width: 50%;"><b><?php echo $row['views'];?></b></p>
+            </div>
+            <div style="clear: both;"></div>
+
+            <div class="moreInfoContainer">
+                <p style="float: left; text-align:left; width: 50%;">Rezervacijų kiekis:</p>
+                <p style="float: left; text-align:right; width: 50%;"><b><?php echo $row['times_reserved'];?></b></p>
+            </div>
+            <div style="clear: both;"></div>
+
+            <div class="moreInfoContainer">
                 <p style="float: left; text-align:left; width: 50%;">Pirkėjo duomenys:</p>
                 <p style="float: right; text-align:right; width: 50%;">vardas: <b><?php echo $buyerRow['username'];?></b></p>
                 <p style="float: right; text-align:right; width: 100%;">e. paštas: <b><?php echo $buyerRow['email'];?></b></p>
