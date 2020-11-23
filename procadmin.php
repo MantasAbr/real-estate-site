@@ -12,7 +12,7 @@ include("include/functions.php");
 $_SESSION['prev'] = "procadmin";
 
 $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-	$sql = "SELECT username,userlevel,email,timestamp "
+	$sql = "SELECT userId, username, userlevel, email, timestamp "
             . "FROM " . TBL_USERS . " ORDER BY userlevel DESC,username";
 	$result = mysqli_query($db, $sql);
 	if (!$result || (mysqli_num_rows($result) < 1))  
@@ -84,10 +84,11 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 							{	 
 								$level=$row['userlevel']; 
 								$user= $row['username'];
+								$id = $row['userId'];
 								$nlevel=$_POST['role_'.$user];
 								$naikinti=(isset($_POST['naikinti_'.$user]));
 								if ($naikinti || ($nlevel != $level)) 
-								{ 	$keisti[]=$user;                    // cia isiminti kuriuos keiciam, ka keiciam bus irasyta i $pakeitimai
+								{ 	$keisti[]=$id;                    // cia isiminti kuriuos keiciam, ka keiciam bus irasyta i $pakeitimai
 									echo "<tr class=\"postContainer\">
 											<td class=\"postContainer\" style=\"text-align: center;\">
 												".$user. "
@@ -119,7 +120,7 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 						{
 							echo "<br>
 									<p style=\"color: red; font-family: 'Titillium Web', Courier, monospace; font-size: 18px;\">
-										Dėmesio! Bus šalinami tik įrašai iš lentelės 'users'.
+										Dėmesio! Bus šalinami visi įrašai susiję su vartotoju.
 									</p>";
 							echo "<p style=\"color: red; font-family: 'Titillium Web', Courier, monospace; font-size: 18px;\">
 									Kitose lentelėse gali likti susietų įrašų!

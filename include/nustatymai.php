@@ -6,6 +6,7 @@ define("DB_PASS", "stud");
 define("DB_NAME", "portalas");
 define("TBL_USERS", "vartotojas");
 define("TBL_POSTS", "object");
+define("TBL_MESSAGES", "user_level_message");
 $user_roles=array(      // vartotojų rolių vardai lentelėse ir  atitinkamos userlevel reikšmės
 	"Administratorius"=>"9",
 	"Vartotojas"=>"4",
