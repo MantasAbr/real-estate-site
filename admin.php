@@ -22,61 +22,114 @@ date_default_timezone_set("Europe/Vilnius");
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<style>body{background-image: url("include/background.png");}</style>
     </head>
-    <body>
-        <table class="center" ><tr><td>
-            </td></tr><tr><td>
-		<center><font size="5">Vartotojų registracija, peržiūra ir įgaliojimų keitimas</font></center></td></tr></table> <br>
-		<center><b><?php echo $_SESSION['message']; ?></b></center>
-		<form name="vartotojai" action="procadmin.php" method="post">
-	    <table class="center" style=" width:75%; border-width: 2px; border-style: dotted;">
-		         <tr><td width=30%><a href="index.php">[Atgal]</a></td><td width=30%>
-				 <tr><td ><a href="adminviewrequests.php">Privilegijų aukštinimo prašymai</a></td><td width=30%>  
-	<?php
-		   if ($uregister != "self") echo "<a href=\"register.php\"><b>Registruoti naują vartotoją<b></a><td>";
-		   else echo "</td>";
-	?>
-		   
-			<td width="30%">Atlikite reikalingus pakeitimus ir</td><td width="10%"> <input type="submit" value="Vykdyti"></td></tr></table> <br> 
-<?php
-    
-	$db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-	$sql = "SELECT username,userlevel,email,timestamp "
-            . "FROM " . TBL_USERS . " ORDER BY userlevel DESC,username";
-	$result = mysqli_query($db, $sql);
-	if (!$result || (mysqli_num_rows($result) < 1))  
-			{echo "Klaida skaitant lentelę users"; exit;}
-?>
-    <table class="center"  border="1" cellspacing="0" cellpadding="3">
-    <tr><td><b>Vartotojo vardas</b></td><td><b>Rolė</b></td><td><b>E-paštas</b></td><td><b>Paskutinį kartą aktyvus</b></td><td><b>Šalinti?</b></td></tr>
-<?php
-        while($row = mysqli_fetch_assoc($result)) 
-	{	 
-	    $level=$row['userlevel']; 
-	  	$user= $row['username'];
-	  	$email = $row['email'];
-      	$time = date("Y-m-d G:i", strtotime($row['timestamp']));
-      	echo "<tr><td>".$user. "</td><td>";
-    	echo "<select name=\"role_".$user."\">";
-      	$yra=false;
-		foreach($user_roles as $x=>$x_value)
-  			{echo "<option ";
-        	 if ($x_value == $level) {$yra=true;echo "selected ";}
-             echo "value=\"".$x_value."\" ";
-         	 echo ">".$x."</option>";
-        	 }
-		if (!$yra)
-        {echo "<option selected value=".$level.">Neegzistuoja=".$level."</option>";}
-        $UZBLOKUOTAS=UZBLOKUOTAS; echo "<option ";
-        if ($level == UZBLOKUOTAS) echo "selected ";
-          echo "value=".$UZBLOKUOTAS." ";
-        echo ">Užblokuotas</option>";      // papildoma opcija
-      echo "</select></td>";
-          
-      echo "<td>".$email."</td><td>".$time."</td>";
-      echo "<td><input type=\"checkbox\" name=\"naikinti_".$user."\">";
-   }
-?>
-        </table>
-        <br> <input type="submit" value="Vykdyti">
-        </form>
-    </body></html>
+
+    <body style="width: 70%; margin-left: auto; margin-right: auto;">
+        
+		<p class="adminTitle">Vartotojų registracija, peržiūra ir įgaliojimų keitimas</p>
+
+		<div align="center">
+			<hr/>
+		
+			<br>
+
+			<form name="vartotojai" action="procadmin.php" method="post">
+
+				<div class="adminMenu">
+
+					<div style="float:left;"> 
+						<a href="index.php" class="goBack">
+							<i class="material-icons" style="font-size: 27px;">
+								keyboard_arrow_left</i>
+								Atgal
+						</a>
+					</div>
+					
+					<div style="display: inline-block;">
+						<a class="adminMenuButton" href="adminviewrequests.php">
+							<i class="material-icons" style="font-size: 27px; padding: 0 7px;">
+								assignment_ind</i>
+							Privilegijų aukštinimo prašymai
+						</a>
+					</div>
+
+					<?php
+						if ($uregister != "self") 
+							echo "
+							<a style=\"float:right;\"class=\"adminMenuButton\" href=\"register.php\">
+								<i class=\"material-icons\" style=\"font-size: 27px; padding: 0 7px;\">
+								person_add_alt_1</i>
+								Registruoti naują vartotoją
+							</a>";
+						else echo "";
+					?>
+				</div>
+
+			<?php echo "<p style=\"color: red; font-family: 'Titillium Web', Courier, monospace; font-size: 18px;\">
+                ".$_SESSION['message'] . "<br></p>"; $_SESSION['message']="";?>
+
+			<br>
+		 
+
+			<?php  
+				$db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+				$sql = "SELECT username, userlevel, email, timestamp "
+					. "FROM " . TBL_USERS . " ORDER BY userlevel DESC, username";
+					
+				$result = mysqli_query($db, $sql);
+				if (!$result || (mysqli_num_rows($result) < 1))
+				{
+					echo "Klaida skaitant lentelę users"; exit;
+				}
+			?>
+
+			<div class="postContainer">
+
+				<table class="postContainer" style="font-size: 22px; font-weight: bold; text-align: center;">
+					<tr class="postContainer">
+						<td class="postContainer" style="width: 12%; font-size: 18px;">Vartotojo vardas</td>
+						<td class="postContainer" style="width: 10%; font-size: 18px;">Rolė</td>
+						<td class="postContainer" style="width: 20%; font-size: 18px;">E-paštas</td>
+						<td class="postContainer" style="width: 20%; font-size: 18px;">Paskutinį kartą aktyvus</td>
+						<td class="postContainer" style="width: 3%; font-size: 18px;">Šalinti?</td>
+					</tr>
+
+					<?php
+						while($row = mysqli_fetch_assoc($result)) 
+						{	 
+							$level=$row['userlevel']; 
+							$user= $row['username'];
+							$email = $row['email'];
+							$time = date("Y-m-d G:i", strtotime($row['timestamp']));
+							echo "<tr class=\"postContainer\">
+								  <td class=\"postContainer\" style=\"font-size: 16px;\">".$user. "</td>
+								  <td class=\"postContainer\">";
+							echo "<select name=\"role_".$user."\">";
+							$yra=false;
+							foreach($user_roles as $x=>$x_value)
+								{echo "<option ";
+								if ($x_value == $level) {$yra=true;echo "selected ";}
+								echo "value=\"".$x_value."\" ";
+								echo ">".$x."</option>";
+								}
+							if (!$yra)
+							{echo "<option selected value=".$level.">Neegzistuoja=".$level."</option>";}
+							$UZBLOKUOTAS=UZBLOKUOTAS; echo "<option ";
+							if ($level == UZBLOKUOTAS) echo "selected ";
+							echo "value=".$UZBLOKUOTAS." ";
+							echo ">Užblokuotas</option>";      // papildoma opcija
+							echo "</select></td>";
+							
+							echo "<td class=\"postContainer\" style=\"font-weight: lighter; font-size: 16px;\">".$email."</td>
+								  <td class=\"postContainer\" style=\"font-weight: lighter; font-size: 16px;\">".$time."</td>";
+							echo "<td class=\"postContainer\"><input type=\"checkbox\" name=\"naikinti_".$user."\"></tr>";
+						}
+					?>
+				</table>
+				
+				<br>
+				<input class="button" type="submit" value="Vykdyti">
+			</div>
+		</form>
+		</div>
+    </body>
+</html>

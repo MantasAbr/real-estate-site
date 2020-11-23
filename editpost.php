@@ -73,6 +73,15 @@
 		<div align="center">
 			<div class="newPostContainer">
 
+                <div style="float:left;"> 
+					<a href="operacija1.php" class="goBack">
+						<i class="material-icons" style="font-size: 27px;">
+							keyboard_arrow_left</i>
+							Atgal
+					</a>
+                </div>
+                <br>
+
 				<p style="font-size:22pt; font-family: 'Titillium Web', sans-serif;"><b>Skelbimo redagavimas</b></p>
 
 				<div style="padding-top: 30px;"></div>

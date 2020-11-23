@@ -123,6 +123,10 @@ a.meniu{
     font-family: 'Titillium Web', Courier, monospace;
     font-weight: bold;
 }
+a.meniu:hover{
+    background-color: #e2a5a1;
+    visibility: visible;
+}
 a.register {
     background-color: #aa7370;
     border-style: solid;
@@ -156,6 +160,11 @@ a.goBack {
     border-radius: 5px 5px 5px 5px;
     font-family: 'Titillium Web', Courier, monospace;
     font-weight: bold;
+}
+a.goBack:hover {
+    color: darkred;
+    background-color: #e2a5a1;
+    visibility: visible;
 }
 a.postContainer {
     margin-top: 10px;
@@ -341,4 +350,54 @@ div.infoContainer {
     border-width: 1.5px;
     border-color: #222222;
     border-radius: 5px 5px 5px 5px;
+}
+p.adminTitle {
+    padding: 20px 20px -0px 20px;
+    text-align: center;
+    font-family: 'Titillium Web', Courier, monospace;
+    font-size: 28px;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #222222;
+    margin: 1em 0;
+    margin-top: -20px;
+    padding: 0;
+    width: 44%;
+    text-align: center;
+}
+div.adminMenu {
+    width: 50%;
+    padding: 15px 20px;
+    margin: 0 10px;
+    background-color: #D2DEE0aa;
+    display: inline-block;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    border-radius: 5px 5px 5px 5px;
+}
+a.adminMenuButton {
+    text-align: center;
+    background-color: #aa7370;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    font-size: 17px;
+    border-radius: 5px 5px 5px 5px;
+    font-family: 'Titillium Web', Courier, monospace;
+}
+a.adminMenuButton:hover{
+    background-color: #e2a5a1;
+    visibility: visible;
 }
