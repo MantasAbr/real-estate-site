@@ -287,6 +287,8 @@ textarea.request {
     resize: none;
     font-size: 18px;
     padding: 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    font-family: 'Titillium Web', Courier, monospace;
 }
 textarea.newAd {
     resize: none;
