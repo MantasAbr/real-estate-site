@@ -56,21 +56,23 @@ $_SESSION['prev']="register";
 							<?php echo $_SESSION['telephone_error'];?>
 							</p>    
 							<?php
-									if ($_SESSION['ulevel'] == $user_roles[ADMIN_LEVEL] )
-								{echo "<p style=\"text-align:left;\">Rolė<br>";
-									echo "<select name=\"role\">";
+								if ($_SESSION['ulevel'] == $user_roles[ADMIN_LEVEL] )
+								{echo "<p style=\"text-align:left;\"><p style=\"font-family: 'Titillium Web', sans-serif;\">Rolė</p>";
+									echo "<select name=\"role\" style=\"margin-right: 50px;\">";
 									foreach($user_roles as $x=>$x_value)
 									{echo "<option ";
 										if ($x == DEFAULT_LEVEL) echo "selected ";
 										echo "value=\"".$x_value."\" ";
 										echo ">".$x."</option></p>";
-									}
+									}									
 								}
 							?>
 							<br>
-							<p style="text-align:center;">
-							<input class="button" type="submit" value="Registruoti">
-							</p>
+							
+							<div style="text-align:center;">
+							<input style=" display: inline-block;" class="button" type="submit" value="Registruoti">
+							</div>
+
 							</form>
 							</td></tr>
 						</table>

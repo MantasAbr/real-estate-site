@@ -401,3 +401,27 @@ a.adminMenuButton:hover{
     background-color: #e2a5a1;
     visibility: visible;
 }
+button.forward {
+    text-align: center;
+    background-color: #aa7370;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    font-size: 17px;
+    border-radius: 5px 5px 5px 5px;
+    font-family: 'Titillium Web', Courier, monospace;
+    font-weight: bold;
+}
+button.forward:hover {
+    color: darkgreen;
+    background-color: #e2a5a1;
+    visibility: visible;
+}
