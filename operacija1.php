@@ -19,6 +19,7 @@
     include("include/nustatymai.php");
     $user=$_SESSION['user'];
     $userlevel=$_SESSION['ulevel'];
+    $userID=$_SESSION['userid'];
     $role="";
     {foreach($user_roles as $x=>$x_value)
         {if ($x_value == $userlevel) $role=$x;}
@@ -113,7 +114,7 @@
                                     Informacija
                                 </a>
                                 
-                                ".(($userlevel == $user_roles["Pardavėjas"]) || ($userlevel == $user_roles[ADMIN_LEVEL] ) ? "
+                                ".((($userlevel == $user_roles["Pardavėjas"]) && $row['seller_id'] == $userID) || ($userlevel == $user_roles[ADMIN_LEVEL] ) ? "
                                 <a class=\"postContainerActions\" style=\"padding: 2px 15.25px 2px 8px;\" href='editpost.php?id=".$row['object_id']."'>
                                     <i class=\"material-icons\" style=\"font-size: 27px; padding-right: 4px;\">
                                     edit

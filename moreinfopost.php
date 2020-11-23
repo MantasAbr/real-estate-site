@@ -16,6 +16,11 @@
     $row = mysqli_fetch_assoc($result);
     $date = date_create_from_format('Y-m-d H:i:s', $row['upload_time']);
 
+    $updateViews = mysqli_query($conn, "UPDATE object SET views=views+1 WHERE object_id='$id'");
+    if(mysqli_query($conn, $updateViews)){
+        echo "Nepavyksta padidinti skelbimo peržiūrų skaitliuko";        
+    }
+
     $conn->close();
 ?>
 
@@ -71,6 +76,12 @@
             <div class="moreInfoContainer">
                 <p style="float: left; text-align:left; width: 50%;">Ikelta:</p>
                 <p style="float: left; text-align:right; width: 50%;"><b><?php echo date_format($date, 'Y-m-d H:m');?></b></p>
+            </div>
+            <div style="clear: both;"></div>
+
+            <div class="moreInfoContainer">
+                <p style="float: left; text-align:left; width: 50%;">Skelbimo peržiūros:</p>
+                <p style="float: left; text-align:right; width: 50%;"><b><?php echo $row['views'];?></b></p>
             </div>
             <div style="clear: both;"></div>
 

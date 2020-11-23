@@ -17,8 +17,8 @@ $levels=$_SESSION['pakeitimai'];
 
 foreach ($_SESSION['ka_keisti'] as $id){
   $level=$levels[$i++];
-  if ($level == -1){
-    $userID = $id;
+  $userID = $id;
+  if ($level == -1){   
     $sql = "DELETE FROM ". TBL_USERS. "  WHERE  userId='$userID'";
     if (mysqli_query($db, $sql)){                       //Triname vartotoja is vartotojas lenteles    
       $deletePosts = "DELETE FROM ". TBL_POSTS. " WHERE seller_id='$userID'";
