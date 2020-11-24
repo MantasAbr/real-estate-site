@@ -18,20 +18,24 @@
 	$user="stud";
 	$password="stud";
 	$dbname="portalas";
-    $lentele='object';
-
-    $target="images/".basename($_FILES['image']['name']);
+    $lentele='object';  
 
     $address=htmlspecialchars($_POST['address']); $_SESSION['address_post']=$address;
     $city=htmlspecialchars($_POST['city']); $_SESSION['city_post']=$city;
     $price=$_POST['price']; $_SESSION['price_post']=$price;
     $description=htmlspecialchars($_POST['description']); $_SESSION['description_post']=$description;
-    $image=$_FILES['image']['name'];
     $file_type=$_FILES['image']['type'];
     $_SESSION['prev']="procnewadvert";
 
     $object_id = md5(uniqid($description));
     $seller_id = $_SESSION['userid'];
+
+    $filename   = $object_id . "-" . time("Y-m-d H:i:s");
+    $extension  = pathinfo( $_FILES["image"]["name"], PATHINFO_EXTENSION );
+    $basename   = $filename . "." . $extension;
+
+    $source       = $_FILES["image"]["tmp_name"];
+    $destination  = "images/{$basename}";
 
     $conn = new mysqli($server, $user, $password, $dbname);
     if ($conn->connect_error) die("Negaliu prisijungti: " . $conn->connect_error);
@@ -51,11 +55,9 @@
                             exit;
                         }
 
-                        $sql= "INSERT INTO $lentele (object_id, seller_id, is_pending, is_sold, times_reserved, views, image, address, city, price, description, upload_time)
-                        VALUES ('$object_id', '$seller_id', 0, 0, 0, 0, '$image', '$address', '$city', '$price', '$description', NOW())";
-
-                        if(move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-                            echo "Okay";
+                        if(move_uploaded_file($source, $destination)) {
+                            $sql= "INSERT INTO $lentele (object_id, seller_id, is_pending, is_sold, times_reserved, views, image, address, city, price, description, upload_time)
+                            VALUES ('$object_id', '$seller_id', 0, 0, 0, 0, '$basename', '$address', '$city', '$price', '$description', NOW())";
                         }
                         else{
                             //die("Negaliu įrašyti nuotraukos " . $conn->error);

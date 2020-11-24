@@ -24,14 +24,30 @@
         $city=htmlspecialchars($_POST['city']);
         $price=$_POST['price'];
         $description=htmlspecialchars($_POST['description']);
+        $file_type=$_FILES['image']['type'];
         $image=$_FILES['image']['name'];
 
-        if(checkaddress($address) && checkcity($city) && checkprice($price) && checkdescription($description)){
-            $sql = "UPDATE object SET image='$image', address='$address', city='$city', price='$price', description='$description'
-            WHERE object_id='$id'";
+        $filename   = $id . "-" . time("Y-m-d H:i:s");
+        $extension  = pathinfo( $_FILES["image"]["name"], PATHINFO_EXTENSION );
+        $basename   = $filename . "." . $extension;
     
-            if(move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-                echo "Okay";
+        $source       = $_FILES["image"]["tmp_name"];
+        $destination  = "images/{$basename}";
+
+        if(checkaddress($address) && checkcity($city) && checkprice($price) && checkdescription($description)){
+
+            $allowed = array("image/jpeg", "image/png", "image/jpg", "image/gif");
+
+            if(!in_array($file_type, $allowed)){
+                $_SESSION['message']="Blogo formato nuotrauka! Galimi tik \".png\", \".jpg,\" \".jpeg,\" ir \".gif\" formatai";
+                $conn->close();
+                header("Location:operacija1.php");
+                exit;
+            }
+    
+            if(move_uploaded_file($source, $destination)) {
+                $sql = "UPDATE object SET image='$basename', address='$address', city='$city', price='$price', description='$description'
+                WHERE object_id='$id'";
             }
             else{
                 $_SESSION['message']="Neįkelta nuotrauka";
