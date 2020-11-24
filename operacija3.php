@@ -8,6 +8,8 @@
 
 	include("include/nustatymai.php");
 	include("include/functions.php");
+
+	if ($_SESSION['prev'] != "procnewadvert")  inisession("part");
 	
 	$_SESSION['prev']="operacija3";
 ?>
@@ -42,16 +44,16 @@
 
 				<form action="procnewadvert.php" method="POST" enctype="multipart/form-data" id="description">
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Adresas:<br>
-					<input class ="newAd" name="address" type="text" placeholder="Nekilnojamojo turto vietos adresas" maxlength="50"><br>
+					<input class ="newAd" name="address" type="text" placeholder="Nekilnojamojo turto vietos adresas" maxlength="50" value="<?php echo $_SESSION['address_post'];  ?>"><br>
 					<?php echo $_SESSION['address_error']; ?>
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Miesto pavadinimas:<br>
-					<input class ="newAd" name="city" type="text" placeholder="Miestas, kuriame yra nekilnojamasis turtas" maxlength="50"><br>
+					<input class ="newAd" name="city" type="text" placeholder="Miestas, kuriame yra nekilnojamasis turtas" maxlength="50" value="<?php echo $_SESSION['city_post'];  ?>"><br>
 					<?php echo $_SESSION['city_error']; ?>
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Kaina eurais:<br>
-					<input class ="newAd" name="price" type="text" placeholder="" maxlength="15"><br>
+					<input class ="newAd" name="price" type="text" placeholder="" maxlength="15" value="<?php echo $_SESSION['price_post'];  ?>"><br>
 					<?php echo $_SESSION['price_error']; ?>
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Aprašymas:<br>
-					<textarea autofocus="true" rows="4" cols="50" class="newAd" maxlength="200" id="description" name="description" form="description" placeholder="Įveskite tekstą..."></textarea><br>
+					<textarea autofocus="true" rows="4" cols="50" class="newAd" maxlength="200" id="description" name="description" form="description" placeholder="Įveskite tekstą..."><?php echo $_SESSION['description_post'];  ?></textarea><br>
 					<?php echo $_SESSION['description_error']; ?>
 					<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Nuotrauka:<br>
 					<input name="image" type="file" style="padding: 20px 0;"><br>

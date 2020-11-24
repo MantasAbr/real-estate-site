@@ -2,8 +2,13 @@
 
     session_start();
 
+    include("include/nustatymai.php");
+    include("include/functions.php");
+
     if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "index") && ($_SESSION['prev'] != "procrequesttoseller"))
     { header("Location: logout.php");exit;}
+
+    if ($_SESSION['prev'] != "procrequesttoseller")  inisession("part");
 
     $_SESSION['prev']="requesttoseller";
     $userid=$_SESSION['userid'];
@@ -62,9 +67,9 @@
                     </p>
     
                     <form id=\"request\" action=\"procrequesttoseller.php\" method=\"POST\">
-                        <textarea autofocus=\"true\" rows=\"4\" cols=\"50\" class=\"request\" maxlength=\"200\" name=\"request\" form=\"request\" placeholder=\"Įveskite tekstą...\"></textarea>                     
+                        <textarea autofocus=\"true\" rows=\"4\" cols=\"50\" class=\"request\" maxlength=\"200\" name=\"request\" form=\"request\" placeholder=\"Įveskite tekstą...\">"; echo $_SESSION['request_post']; echo "</textarea>                     
                         <br>";
-                        echo $_SESSION['description_error'];
+                        echo $_SESSION['request_error'];
                         echo " <br>
                         <input class=\"button\" style=\"margin-top: 30px;\" type=\"submit\" value=\"Pateikti\">
                     </form>

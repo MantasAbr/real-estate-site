@@ -22,11 +22,12 @@
 
     $target="images/".basename($_FILES['image']['name']);
 
-    $address=htmlspecialchars($_POST['address']);
-    $city=htmlspecialchars($_POST['city']);
-    $price=$_POST['price'];
-    $description=htmlspecialchars($_POST['description']);
+    $address=htmlspecialchars($_POST['address']); $_SESSION['address_post']=$address;
+    $city=htmlspecialchars($_POST['city']); $_SESSION['city_post']=$city;
+    $price=$_POST['price']; $_SESSION['price_post']=$price;
+    $description=htmlspecialchars($_POST['description']); $_SESSION['description_post']=$description;
     $image=$_FILES['image']['name'];
+    $file_type=$_FILES['image']['type'];
     $_SESSION['prev']="procnewadvert";
 
     $object_id = md5(uniqid($description));
@@ -39,9 +40,19 @@
         if(!checkobjects($address)){
             if(checkcity($city)){
                 if(checkprice($price)){
-                    if(checkdescription($description)){                       
-                        $sql= "INSERT INTO $lentele (object_id, seller_id, is_pending, is_sold, image, address, city, price, description, upload_time)
-                        VALUES ('$object_id', '$seller_id', 0, 0, '$image', '$address', '$city', '$price', '$description', NOW())";
+                    if(checkdescription($description)){
+                        
+                        $allowed = array("image/jpeg", "image/png", "image/jpg", "image/gif");
+
+                        if(!in_array($file_type, $allowed)){
+                            $_SESSION['image_error']="<font size=\"2\" color=\"#ff0000\">* Blogo formato nuotrauka! Galimi tik \".png\", \".jpg,\" \".jpeg,\" ir \".gif\" formatai</font>";
+                            $conn->close();
+                            header("Location:operacija3.php");
+                            exit;
+                        }
+
+                        $sql= "INSERT INTO $lentele (object_id, seller_id, is_pending, is_sold, times_reserved, views, image, address, city, price, description, upload_time)
+                        VALUES ('$object_id', '$seller_id', 0, 0, 0, 0, '$image', '$address', '$city', '$price', '$description', NOW())";
 
                         if(move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
                             echo "Okay";

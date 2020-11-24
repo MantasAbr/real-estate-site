@@ -12,7 +12,7 @@ if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "register"))
 
   include("include/nustatymai.php");
   include("include/functions.php");
- 
+
   $_SESSION['name_error']="";
   $_SESSION['pass_error']="";
   $_SESSION['mail_error']="";

@@ -28,6 +28,9 @@ function inisession($arg) {   //valom sesijos kintamuosius
 		$_SESSION['price_error']="";
 		$_SESSION['description_error']="";
 		$_SESSION['image_error']="";
+
+		$_SESSION['request_error']="";
+		$_SESSION['request_post']="";
         }
 
 function checkname ($username){   // Vartotojo vardo sintakse
@@ -118,7 +121,7 @@ function checkaddress ($address){
 		"<font size=\"2\" color=\"#ff0000\">* Neįvestas adresas</font>";
 		"";
 		return false;}
-	elseif (!preg_match("/[0-9\p{L}]+/u", $address)) 
+	elseif (!preg_match_all("/^([0-9a-zA-Z \p{L}-])*$/u", $address)) 
 	{$_SESSION['address_error']=
 		"<font size=\"2\" color=\"#ff0000\">* Nenaudokite skyrybos ženklų</font>";
 	return false;}
@@ -145,7 +148,7 @@ function checkcity ($city){
 		"<font size=\"2\" color=\"#ff0000\">* Neįvestas miestas</font>";
 		"";
 		return false;}
-	elseif (!preg_match("/[\p{L}]+/u", $city)) 
+	elseif (!preg_match_all("/^([a-zA-Z \p{L}-])*$/u", $city)) 
 	{$_SESSION['city_error']=
 		"<font size=\"2\" color=\"#ff0000\">* Nenaudokite skyrybos ženklų ir\arba skaičių</font>";
 		return false;}
@@ -173,8 +176,22 @@ function checkdescription ($description){
 		"<font size=\"2\" color=\"#ff0000\">* Neįvestas aprašymas</font>";
 		"";
 		return false;}
-	elseif (!preg_match("/[0-9.,?!\p{L}]+/u", $description)) 
+	elseif (!preg_match_all("/^([0-9a-zA-Z \p{L}-])*$/u", $description)) 
 	{$_SESSION['description_error']=
+		"<font size=\"2\" color=\"#ff0000\">* Nenaudokite neleistinų ženklų</font>";
+		return false;}
+
+	else return true;
+}
+
+function checkrequest ($request){
+	if (!$request || strlen($request = trim($request)) == 0) 
+	{$_SESSION['request_error']=
+		"<font size=\"2\" color=\"#ff0000\">* Neįvestas prašymo laukas</font>";
+		"";
+		return false;}
+	elseif (!preg_match_all("/^([0-9a-zA-Z \p{L}-])*$/u", $request)) 
+	{$_SESSION['request_error']=
 		"<font size=\"2\" color=\"#ff0000\">* Nenaudokite neleistinų ženklų</font>";
 		return false;}
 
