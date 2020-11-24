@@ -72,6 +72,21 @@
             <?php echo "<p style=\"color: red; font-family: 'Titillium Web', Courier, monospace; font-size: 18px;\">
                 ".$_SESSION['message'] . "<br></p>"; $_SESSION['message']="";?>
 
+            <form class="filterBox">
+                <div>
+                    <i class="material-icons" style="position: absolute; font-size: 36px; color: gray; padding-top: 5px; padding-left: 5px;">search</i>
+                    <input class="filterInput" type="text" placeholder="Ieškoti pagal miestą...">
+                </div>
+                <div style="padding: 8px;">
+                    <input type="radio" id="cheap" name="price" value="Pigiausi viršuje?">
+                    <label for="cheap">Pigiausi viršuje?</label>
+                    <input type="radio" id="expensive" name="price" value="Pigiausi apačioje?">
+                    <label for="expensive">Pigiausi apačioje?</label>
+                </div>
+                <div>
+                    <input class="filterButton" type="submit" name="Ieškoti" value="Filtruoti">
+                </div>
+            </form>
 
             <table class="postContainer">
                 <tr class="postContainer" style="font-size: 22px; font-weight: bold; text-align: center;">

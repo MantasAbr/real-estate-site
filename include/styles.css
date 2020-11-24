@@ -425,3 +425,48 @@ button.forward:hover {
     background-color: #e2a5a1;
     visibility: visible;
 }
+form.filterBox{
+    width: 65%;
+    text-align: center;
+    background-color: #ccaba9;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    color: black;
+    padding: 20px 20px;
+    font-size: 17px;
+    display: inline-flex;
+    font-family: 'Titillium Web', Courier, monospace;
+    border-radius: 10px 10px 10px 10px;
+}
+input.filterInput {
+    background-color: #d2dee0;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 12px 0px 12px 40px;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    color: black;
+    border-radius: 5px;
+}
+input.filterButton {
+    background-color: #aa7370;
+    color: black;
+    padding: 5px 15px;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: #222222;
+    color: black;
+    border-radius: 5px;
+    font-family: 'Titillium Web', Courier, monospace;
+    font-weight: bolder;
+    margin-top: 5px;
+    margin-left: 12px;
+}
+input.filterButton:hover {
+    color: darkgreen;
+    background-color: #d2dee0;
+    visibility: visible;
+}
