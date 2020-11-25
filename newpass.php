@@ -1,17 +1,18 @@
 <?php 
-// newpass.php 
-// iš proclogin per forgotpass.php gauna:
-// $_SESSION['name_login']  vartotojas
-// $_SESSION['userid']   id, bus slaptažodžiui pirmi 4 simboliai
-//                          !! jei e-paštu negaunate, atsirinkite 4 simbolius iš DB "userid" stulpelio
-// $_SESSION['umail']   epaštas, kur pasiųsti 
 
 session_start(); 
-// cia sesijos kontrole
+
 if (empty($_SESSION['name_login'])) { header("Location: logout.php");exit;}
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require_once "vendor/autoload.php";
 
 $_SESSION['prev'] = "newpass";
 include("include/nustatymai.php");
+include("smtp_config/smtp_config.php");
 
 $naujaspass=substr($_SESSION['userid'],0,4);$passdb=substr(hash('sha256', $naujaspass),5,32);
 $user=$_SESSION['name_login'];
@@ -22,18 +23,60 @@ $user=$_SESSION['name_login'];
 		
 		 if (!mysqli_query($db, $sql)) {
              echo " DB klaida keiciant slaptazodi: " . $sql . "<br>" . mysqli_error($db);
-		     exit;}
+         exit;}
+         
+         //PHPMailer Object
+  $mail = new PHPMailer(true); //Argument true in constructor enables exceptions
+  $mail->Encoding = 'base64';
+  $mail->CharSet = 'UTF-8';
 
-// siunciam
-$to      = $_SESSION['umail'];
-$subject = "T120B145 demo projektas - laikinas slaptažodis";
-$message = $user . ",\n\n"
-                . "Jūsų laikinas slaptažodis:\n\n"
-                . "Vartotojo vardas: " . $user . "\n"
-                . "Naujas slaptažodis: " . $naujaspass . "\n\n";
-$headers = "From: " . EMAIL_FROM_NAME . " <" . EMAIL_FROM_ADDR . ">\r\n";
-$headers .= "Content-type: text; charset=UTF-8\r\n";
-mail($to, $subject, $message, $headers);
+  $mail->SMTPDebug = 3;
+
+  $mail->isSMTP();
+
+  $mail->Host = "smtp.gmail.com";
+  $mail->SMTPAuth = true;
+
+  /*
+  One should use their own predefined gmail account credentials:
+  1. Create a folder called smtp_config in the project directory
+  2. Make a new smtp_config.php file and write this in it:
+    <?php
+      define("USERNAME", "yourmail@example.com");
+      define("PASSWORD", "yourmailpassword");
+    ?>
+  */  
+  $mail->Username = USERNAME;               
+  $mail->Password = PASSWORD;
+  $mail->SMTPSecure = "tls";
+  $mail->Port = 587;
+
+  $mail->SMTPOptions = array(
+      'ssl' => array(
+          'verify_peer' => false,
+          'verify_peer_name' => false,
+          'allow_self_signed' => true
+      )
+  );
+
+  //From email address and name
+  $mail->From = "mantasabra@gmail.com";
+  $mail->FromName = "Nekilnojamojo turto portalas";
+
+    //To address and name
+  $mail->addAddress($_SESSION['umail']);
+
+  $mail->Subject = "Laikinas slaptažodis";
+  $mail->Body = "Jūsų naujas laikinas slaptažodis yra: ". $naujaspass;
+
+  try {
+      $mail->send();
+      header("Location:logout.php");
+      exit;
+  } catch (Exception $e) {
+      echo "Mailer Error: " . $mail->ErrorInfo;
+    echo error_get_last();
+  }
 ?>
 
 <html>

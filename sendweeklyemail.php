@@ -4,6 +4,7 @@ use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
 require_once "vendor/autoload.php";
+include("smtp_config/smtp_config.php");
 
 $server="localhost";
 $user="stud";
@@ -23,8 +24,19 @@ $mail->isSMTP();
 
 $mail->Host = "smtp.gmail.com";
 $mail->SMTPAuth = true;
-$mail->Username = "mantasabra@gmail.com";                 
-$mail->Password = "Gargzdai159";
+
+/*
+One should use their own predefined gmail account credentials:
+1. Create a folder called smtp_config in the project directory
+2. Make a new smtp_config.php file and write this in it:
+<?php
+    define("USERNAME", "yourmail@example.com");
+    define("PASSWORD", "yourmailpassword");
+?>
+*/ 
+
+$mail->Username = USERNAME;                 
+$mail->Password = PASSWORD;
 $mail->SMTPSecure = "tls";
 $mail->Port = 587;
 
@@ -36,7 +48,6 @@ $mail->SMTPOptions = array(
     )
 );
 
-//From email address and name
 $mail->From = "mantasabra@gmail.com";
 $mail->FromName = "Mantas";
 
@@ -59,10 +70,12 @@ if (!$sellers = $conn->query($fetch_sellers))
             die("Negaliu nuskaityti: " . $conn->error);
     
         while($posts_row = $posts->fetch_assoc()){
-            $mail->Body .= "Objektas: " . $posts_row['address'] . "\n"
-                       . "  Rezervacijos: " . $posts_row['times_reserved'] . "\n"
-                       . "  Peržiūros: " . $posts_row['views'] . "\n\n";
+            $mail->Body .= "Objektas: " . $posts_row['address'] . ", " .$posts_row['city']."\n"
+                         . " • Atliktos rezervacijos: " . $posts_row['times_reserved'] . "\n"
+                         . " • Viso peržiūrų: " . $posts_row['views'] . "\n\n";
         }
+
+        $mail->Body .= "Automatizuotas laiškas Kompiuterių tinklų ir Internetinių technologijų modulio projektui\n";
     
         echo "Siunčiamas laiškas pardavėjui: " . $seller_row['username'];
     
@@ -74,4 +87,7 @@ if (!$sellers = $conn->query($fetch_sellers))
             echo error_get_last();
         }
     }
+
+    $conn->close();
+
 ?>
