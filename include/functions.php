@@ -176,7 +176,7 @@ function checkdescription ($description){
 		"<font size=\"2\" color=\"#ff0000\">* Neįvestas aprašymas</font>";
 		"";
 		return false;}
-	elseif (!preg_match_all("/^([0-9a-zA-Z \p{L}-])*$/u", $description)) 
+	elseif (!preg_match_all("/^([0-9a-zA-Z., \p{L}-])*$/u", $description)) 
 	{$_SESSION['description_error']=
 		"<font size=\"2\" color=\"#ff0000\">* Nenaudokite neleistinų ženklų</font>";
 		return false;}

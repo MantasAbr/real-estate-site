@@ -122,9 +122,6 @@ $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 									<p style=\"color: red; font-family: 'Titillium Web', Courier, monospace; font-size: 18px;\">
 										Dėmesio! Bus šalinami visi įrašai susiję su vartotoju.
 									</p>";
-							echo "<p style=\"color: red; font-family: 'Titillium Web', Courier, monospace; font-size: 18px;\">
-									Kitose lentelėse gali likti susietų įrašų!
-								  </p>";
 						}
 						// pakeitimus irasysim i sesija 
 						if (empty($keisti))

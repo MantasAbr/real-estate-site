@@ -21,7 +21,7 @@ foreach ($_SESSION['ka_keisti'] as $id){
   if ($level == -1){   
     $sql = "DELETE FROM ". TBL_USERS. "  WHERE  userId='$userID'";
     if (mysqli_query($db, $sql)){                       //Triname vartotoja is vartotojas lenteles    
-      $deletePosts = "DELETE FROM ". TBL_POSTS. " WHERE seller_id='$userID'";
+      $deletePosts = "DELETE FROM ". TBL_POSTS. " WHERE buyer_id='$userID'";
       if (mysqli_query($db, $deletePosts)){             //Triname objektų įrašus, kurie buvo paskelbti vartotojo
         $deleteMessages = "DELETE FROM ". TBL_MESSAGES. " WHERE user_id='$userID'";
         if (mysqli_query($db, $deleteMessages)){        //Triname žinutes, kurios buvo skirtos adminui dėl vartotojo teisių pakėlimo  
