@@ -22,7 +22,8 @@ include("include/nustatymai.php");
 
     <div>
 		<form action="proclogin.php" method="POST" class="login">             
-        <center style="font-size:26pt; font-family: 'Titillium Web', sans-serif;"><b>Prisijungimas</b></center>
+        <center style="font-size:26pt; padding-top: 20px; font-family: 'Titillium Web', sans-serif;"><b>Prisijungimas</b></center>
+
         <p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Vartotojo vardas:<br>
             <input class ="s1" name="user" type="text" value="<?php echo $_SESSION['name_login'];  ?>"/><br>
             <?php echo $_SESSION['name_error']; 
