@@ -41,10 +41,13 @@ mail($to, $subject, $message, $headers);
         <meta http-equiv="X-UA-Compatible" content="IE=9; text/html; charset=utf-8">
         <title>Pamirštas slaptažodis</title>
         <link href="include/styles.css" rel="stylesheet" type="text/css" >
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+		    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		    <style>body{background-image: url("include/background.png");}</style>
     </head>
   <body>
   <table class="center" ><tr><td>
-        <center><img src="include/top.png"></center>
+        
         </td></tr><tr><td> 
         
         <div align="center"> <font size="4" color="#ff0000"> Pakeistas slaptažodis vartotojui  <?php echo $_SESSION['name_login']; ?></font> <br> 

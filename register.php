@@ -52,7 +52,7 @@ $_SESSION['prev']="register";
 							<?php echo $_SESSION['mail_error']; ?>
 							</p>
 							<p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Telefono nr.:<br>
-							<input class ="s1" name="telephone" type="text" placeholder="+3706" value="<?php echo $_SESSION['telephone_login'];?>"><br>
+							<input class ="s1" name="telephone" type="text" placeholder="+3706" maxlength="12" value="<?php echo $_SESSION['telephone_login'];?>"><br>
 							<?php echo $_SESSION['telephone_error'];?>
 							</p>    
 							<?php
