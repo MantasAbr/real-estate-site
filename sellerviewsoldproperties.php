@@ -49,7 +49,6 @@ $userid=$_SESSION['userid'];
                 <?php
                     $sql =  "SELECT * FROM $lentele WHERE is_sold=1 AND seller_id='$userid'";
                     if (!$result = $conn->query($sql)) die("Negaliu nuskaityti: " . $conn->error);
-                    $result = $conn->query($sql);
 
                     if($result->num_rows > 0){
                         echo "
