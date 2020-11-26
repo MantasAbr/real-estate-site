@@ -162,9 +162,9 @@ function checkprice ($price){
 		"<font size=\"2\" color=\"#ff0000\">* Neįvesta kaina</font>";
 		"";
 		return false;}
-	elseif (!preg_match("/[0-9]+/u", $price)) 
+	elseif (!preg_match_all("/^([0-9])*$/u", $price)) 
 	{$_SESSION['price_error']=
-		"<font size=\"2\" color=\"#ff0000\">* Nenaudokite raidžių</font>";
+		"<font size=\"2\" color=\"#ff0000\">* Nenaudokite raidžių, ženklų arba tarpų</font>";
 		return false;}
 
 	else return true;
