@@ -58,7 +58,7 @@ $_SESSION['prev'] = "useredit";
         </p> 
 
         <p style="text-align:left; font-family: 'Titillium Web', sans-serif;">Tel. nr.:<br>
-			<input class ="s1" name="telephone" type="text" value="<?php echo $_SESSION['telephone_login']; ?>"><br>
+			<input class ="s1" name="telephone" type="text" placeholder="+3706" maxlength="12" value="<?php echo $_SESSION['telephone_login']; ?>"><br>
 			<?php echo $_SESSION['telephone_error']; ?>
         </p> 
 			

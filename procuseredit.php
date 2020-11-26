@@ -29,8 +29,9 @@ session_start();
 
   if (checkpass($pass,$dbpass))  // senas slaptazodis ivestas geras  
     {$ar_pasnn=checkpass($passn,substr(hash('sha256',$passn),5,32)); // ar geras naujas
-	 $ar_mail=checkmail($mail);                        // ar geras epasto laukas
-	 if ( $ar_pasnn && $ar_mail)  // lauku reiksmes geros
+   $ar_mail=checkmail($mail);
+   $ar_tel=checkphone($telephone);                        // ar geras epasto laukas
+	 if ( $ar_pasnn && $ar_mail && $ar_tel)  // lauku reiksmes geros
       { if ($pass != $passn || $mail != $_SESSION['umail'] || $telephone != $_SESSION['utelephone'])   // vartotojas kazka keicia
 	            {$dbpass=substr(hash('sha256',$passn),5,32);
                  $db=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);

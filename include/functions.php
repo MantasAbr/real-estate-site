@@ -104,7 +104,7 @@ function checkphone($telephone) {
 		return false;
 	}
 	else{
-		if(preg_match("/\+3706[0-9]{7}$/", $telephone) && strlen($telephone) == 12){
+		if(preg_match_all("/\+3706[0-9]{7}$/", $telephone) && strlen($telephone) == 12){
 			return true;
 		}
 		else{
