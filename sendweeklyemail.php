@@ -68,12 +68,19 @@ if (!$sellers = $conn->query($fetch_sellers))
             
         if (!$posts = $conn->query($fetch_posts))
             die("Negaliu nuskaityti: " . $conn->error);
-    
-        while($posts_row = $posts->fetch_assoc()){
+
+        if($posts->num_rows > 0){
+            while($posts_row = $posts->fetch_assoc()){
             $mail->Body .= "Objektas: " . $posts_row['address'] . ", " .$posts_row['city']."\n"
                          . " • Atliktos rezervacijos: " . $posts_row['times_reserved'] . "\n"
                          . " • Viso peržiūrų: " . $posts_row['views'] . "\n\n";
+            }
         }
+        
+        else{
+            $mail->Body = "Šiuo metu aktyvių skelbimų dar neturite\n\n";
+        }
+
 
         $mail->Body .= "Automatizuotas laiškas Kompiuterių tinklų ir Internetinių technologijų modulio projektui\n";
     
